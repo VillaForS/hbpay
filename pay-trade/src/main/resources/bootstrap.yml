@@ -1,0 +1,34 @@
+server:
+  port: 10888
+  context-path: /pay-trade
+
+management:
+  port: 10889
+  context-path: /actuator
+  security:
+    enabled: false
+spring:
+    application:
+         name: pay-trade
+    profiles:
+        active:
+        - dev
+    cloud:
+      config:
+        profile: dev
+        uri: http://localhost:10666/pay-config
+        username: zhushuang
+        password: 111111
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10111/eureka
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    
+logging:
+  level:
+    org.springframework.cloud.config: debug
+  
