@@ -29,6 +29,10 @@ spring:
           password: zhush@27    
           basedir:
             configRepo
+          
+  profiles:
+    active:
+      - native
 eureka:
   client:
     service-url:
@@ -38,3 +42,9 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 15
  
+encrypt:
+  key-store:
+    location: hbConfigCenter.keystore
+    alias: hbConfigCenter
+    password: hb0411
+    secret: hb0411

@@ -10,15 +10,15 @@ management:
 spring:
     application:
          name: pay-trade
-    profiles:
-        active:
-        - dev
+
     cloud:
       config:
         profile: dev
-        uri: http://localhost:10666/pay-config
-        username: zhushuang
-        password: 111111
+        label: master
+        discovery:
+          enabled: true
+          service-id: pay-config
+        fail-fast: true
 eureka:
   client:
     service-url:
