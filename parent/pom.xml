@@ -12,19 +12,21 @@
     <!-- hbFintech jar -->
     <pay-common.version>0.0.1-SNAPSHOT</pay-common.version>
     <pay-trade.version>0.0.1-SNAPSHOT</pay-trade.version>
+    <redis-util.version>0.0.1-SNAPSHOT</redis-util.version>
     
     <!-- spring jar  -->
     <spring-boot-dependencies.version>1.5.12.RELEASE</spring-boot-dependencies.version>
     <springframework.version>4.3.16.RELEASE</springframework.version>
     <spring-cloud-dependencies.version>Dalston.SR2</spring-cloud-dependencies.version>
-    <mybatis-spring-boot.version>1.3.2</mybatis-spring-boot.version>
+    
     
     <!-- environment properties -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     
-    <!-- json -->
+    <!-- alibaba -->
 	<fastjson.version>1.2.7</fastjson.version>
+	<druid.version>1.0.26</druid.version>
 	
 	<!-- log -->
 	<logback-classic.version>1.1.7</logback-classic.version>
@@ -34,6 +36,10 @@
 	<commons-lang3.version>3.5</commons-lang3.version>
 	<commons.beanutils.version>1.7.0</commons.beanutils.version>
 	<commons.collections.version>3.2.2</commons.collections.version>
+	
+	<!-- mybatis -->
+	<pagehelper.version>4.1.6</pagehelper.version>
+	<mybatis-spring-boot.version>1.3.2</mybatis-spring-boot.version>
   </properties>
   
   <dependencyManagement> 
@@ -75,23 +81,32 @@
                 <scope>import</scope>
             </dependency>
 	        
+	     <dependency>
+            <groupId>com.hbfintech</groupId>
+            <artifactId>redis-util</artifactId>
+            <version>${redis-util.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <!-- mybatis 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${pagehelper.version}</version>
+        </dependency>
       </dependencies>
+      
   </dependencyManagement>
 
   <!-- 默认child 工程都依赖的类，只能是所有工程的最小化依赖，child工程特定的依赖在child工程pom里添加-->
   <dependencies>
     <dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-core</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-			</dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+     </dependency>
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
@@ -113,6 +128,10 @@
   </dependencies>
   <build>
    <plugins>
+     <plugin>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-maven-plugin</artifactId>
+     </plugin>
      <plugin>
        <artifactId>maven-compiler-plugin</artifactId>
        <configuration>

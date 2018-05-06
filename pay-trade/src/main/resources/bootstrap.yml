@@ -10,15 +10,19 @@ management:
 spring:
     application:
          name: pay-trade
-
+      
     cloud:
       config:
-        profile: dev
         label: master
         discovery:
           enabled: true
           service-id: pay-config
         fail-fast: true
+    
+    cache:
+      type: redis
+      cache-names:
+        - hbPay
         
 eureka:
   client:
@@ -31,5 +35,12 @@ eureka:
     
 logging:
   level:
-    org.springframework.cloud.config: debug
+    org.springframework: error
+    
+    
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+    
+    
+
   
