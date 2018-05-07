@@ -13,5 +13,23 @@ public class Constant {
     
     // 服务端返回map中业务数据结果对应的key名称
     public static final String BIZ_RESULT_KEY = "bizResult";
+    
+    //一天
+    public static final long DAY_MILL_SECONDS = 24 * 60 * 60 * 1000L;
 
+    public static final int NUM_1 = 1;
+
+    public static final int NUM_2 = 2;
+
+    public static final int NUM_3 = 3;
+
+    public static final int NUM_4 = 4;
+
+    public static final int NUM_5 = 5;
+
+    public static final int NUM_8 = 8;
+
+    public static final int NUM_9 = 9;
+
+    public static final int NUM_10 = 10;
 }

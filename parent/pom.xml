@@ -43,6 +43,7 @@
 	
 	<!-- third party -->
 	<lombok.version>1.16.20</lombok.version>
+	<log4j.version>1.2.17</log4j.version>
   </properties>
   
   <dependencyManagement> 
@@ -83,7 +84,13 @@
 				<type>pom</type>
                 <scope>import</scope>
             </dependency>
-	        
+	      
+	     <dependency>
+            <groupId>com.hbfintech</groupId>
+            <artifactId>pay-common</artifactId>
+            <version>${pay-common.version}</version>
+        </dependency>
+         
 	     <dependency>
             <groupId>com.hbfintech</groupId>
             <artifactId>redis-util</artifactId>
@@ -100,13 +107,17 @@
             <artifactId>pagehelper</artifactId>
             <version>${pagehelper.version}</version>
         </dependency>
-      </dependencies>
       <dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>${lombok.version}</version>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>${lombok.version}</version>
     </dependency>
-      
+     <dependency>
+		    <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+		    <version>${log4j.version}</version>
+        </dependency>
+</dependencies>
   </dependencyManagement>
 
   <!-- 默认child 工程都依赖的类，只能是所有工程的最小化依赖，child工程特定的依赖在child工程pom里添加-->
@@ -136,6 +147,10 @@
 			<dependency>
 			    <groupId>org.projectlombok</groupId>
 			    <artifactId>lombok</artifactId>
+			</dependency>
+			<dependency>
+			    <groupId>log4j</groupId>
+			    <artifactId>log4j</artifactId>
 			</dependency>
   </dependencies>
   <build>

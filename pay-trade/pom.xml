@@ -59,6 +59,10 @@
             <groupId>com.hbfintech</groupId>
             <artifactId>redis-util</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.hbfintech</groupId>
+            <artifactId>pay-common</artifactId>
+        </dependency>
                 <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
