@@ -15,6 +15,7 @@ import com.hbfintech.redis.jedis.utils.RedisCacheUtil;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+
 @Configuration
 public class RedisConfig {
 	

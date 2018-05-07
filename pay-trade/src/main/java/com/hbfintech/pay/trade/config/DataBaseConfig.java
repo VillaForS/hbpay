@@ -24,7 +24,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 
 /**
  * 
- * @ClassName:  DruidDataSourceConfig   
+ * @ClassName:  DataBaseConfig   
  * @Description:数据源及mybatis配置
  * @author: zhushuang
  * @date:   2018年5月6日 下午11:16:55   
@@ -35,7 +35,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 @Configuration
 @EnableTransactionManagement
 @MapperScan(value = "com.hbfintech.pay.trade.repository.dao")
-public class DruidDataSourceConfig implements EnvironmentAware {
+public class DataBaseConfig implements EnvironmentAware {
 
     private Environment environment;
     private RelaxedPropertyResolver propertyResolver;
@@ -73,6 +73,7 @@ public class DruidDataSourceConfig implements EnvironmentAware {
         druidDataSource.setPoolPreparedStatements(Boolean.parseBoolean(propertyResolver.getProperty("poolPreparedStatements")));
         druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(propertyResolver.getProperty("maxPoolPreparedStatementPerConnectionSize")));
         druidDataSource.setFilters(propertyResolver.getProperty("filters"));
+        druidDataSource.setConnectionProperties(propertyResolver.getProperty("connectionProperties"));  
         return druidDataSource;
     }
 

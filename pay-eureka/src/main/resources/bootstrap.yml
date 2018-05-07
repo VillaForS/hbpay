@@ -18,5 +18,5 @@ eureka:
     fetch-registry: false  
   server:
     enable-self-preservation: false    
-    eviction-interval-timer-in-ms: 5000
-    response-cache-update-interval-ms: 10000 
+    #eviction-interval-timer-in-ms: 5000
+    #response-cache-update-interval-ms: 10000 

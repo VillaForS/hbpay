@@ -40,6 +40,9 @@
 	<!-- mybatis -->
 	<pagehelper.version>4.1.6</pagehelper.version>
 	<mybatis-spring-boot.version>1.3.2</mybatis-spring-boot.version>
+	
+	<!-- third party -->
+	<lombok.version>1.16.20</lombok.version>
   </properties>
   
   <dependencyManagement> 
@@ -98,6 +101,11 @@
             <version>${pagehelper.version}</version>
         </dependency>
       </dependencies>
+      <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>${lombok.version}</version>
+    </dependency>
       
   </dependencyManagement>
 
@@ -124,6 +132,10 @@
 			<dependency>
 				<groupId>commons-collections</groupId>
 				<artifactId>commons-collections</artifactId>
+			</dependency>
+			<dependency>
+			    <groupId>org.projectlombok</groupId>
+			    <artifactId>lombok</artifactId>
 			</dependency>
   </dependencies>
   <build>
