@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.hbfintech.pay.common.enumm.RespCodeEnum;
+import com.hbfintech.pay.common.exception.BizException;
 import com.hbfintech.pay.common.log.ExceptionLogger;
 import com.hbfintech.pay.common.model.BaseJsonModel;
 
@@ -56,9 +60,22 @@ public class BaseHandlerExceptionResolver extends SimpleMappingExceptionResolver
 			PrintWriter writer = response.getWriter(); 
 			
 			BaseJsonModel model= new BaseJsonModel();
-	    	model.setCode(BaseJsonModel.ERROR_CODE);
-	    	model.setMsg("系统异常");
-	    	
+			model.setRespInfo(RespCodeEnum.SYSTEM_ERROR);
+			
+		   if (ex instanceof MethodArgumentNotValidException)
+	        {
+			   model.setMsg(((MethodArgumentNotValidException) ex).getBindingResult().getFieldError().getDefaultMessage());
+
+	        }
+	        else if (ex instanceof BindException)
+	        {
+	        	model.setMsg(((BindException) ex).getFieldError().getDefaultMessage());
+	        }
+	        else if (ex instanceof BizException)
+	        {
+	        	model.setRespInfo(((BizException) ex).getRespCodeEnum());
+	        }
+			
 	    	if(StringUtils.isNotEmpty(request.getParameter("callbackparam"))){
 			    writer.write(JSON.toJSONString(new JSONPObject("callbackparam",model)));    
 	    	}else{
