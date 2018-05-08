@@ -19,11 +19,6 @@ spring:
           service-id: pay-config
         fail-fast: true
     
-    cache:
-      type: redis
-      cache-names:
-        - hbPay
-        
 eureka:
   client:
     service-url:
@@ -38,8 +33,6 @@ logging:
     org.springframework: error
     
     
-mybatis:
-  config-location: classpath:mybatis/mybatis-config.xml
     
     
 

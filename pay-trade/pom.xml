@@ -9,7 +9,6 @@
 	</parent>
 	
   <artifactId>pay-trade</artifactId>
-  <version>${pay-trade.version}</version>
   <packaging>jar</packaging>
 
   <name>pay-trade</name>

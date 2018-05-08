@@ -11,7 +11,6 @@
   <properties>
     <!-- hbFintech jar -->
     <pay-common.version>0.0.1-SNAPSHOT</pay-common.version>
-    <pay-trade.version>0.0.1-SNAPSHOT</pay-trade.version>
     <redis-util.version>0.0.1-SNAPSHOT</redis-util.version>
     
     <!-- spring jar  -->

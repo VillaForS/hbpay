@@ -26,6 +26,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
+import com.hbfintech.cache.CacheUtil;
 import com.hbfintech.redis.utils.jedis.JedisAction;
 import com.hbfintech.redis.utils.jedis.JedisClient;
 
@@ -44,7 +45,7 @@ import redis.clients.jedis.Tuple;
  * @Copyright: 2018 www.hbfintech.com Inc. All rights reserved. 
  * 注意：本内容仅限于江苏华博金服控股有限公司内部传阅，禁止外泄以及用于其他的商业目
  */
-public class RedisCacheUtil {
+public class RedisCacheUtil implements CacheUtil{
 
 	@Autowired
 	private JedisClient jedisClient;
