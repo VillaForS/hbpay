@@ -1,0 +1,39 @@
+server:
+  port: 10888
+  context-path: /pay-trade
+
+management:
+  port: 10889
+  context-path: /actuator
+  security:
+    enabled: false
+spring:
+    application:
+         name: pay-adapter
+      
+    cloud:
+      config:
+        label: master
+        discovery:
+          enabled: true
+          service-id: pay-config
+        fail-fast: true
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10111/eureka
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+    
+logging:
+  level:
+    org.springframework: error
+    
+    
+    
+    
+
+  
