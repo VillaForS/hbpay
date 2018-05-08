@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.hbfintech.pay.common.constant.Constant;
+import com.hbfintech.pay.common.constant.Constants;
 
 
 /**
@@ -56,7 +56,7 @@ public class RandomStrUtils {
             while (it.hasNext()) {
                 Map.Entry<String, Long> entry = it.next();
                 Long value = entry.getValue();
-                if (nowTime - value > Constant.RPC_SEQ_NO_NOT_REPEAT_INTERVAL) {
+                if (nowTime - value > 60 * 1000) {
                     it.remove();
                 }
             }
@@ -81,7 +81,7 @@ public class RandomStrUtils {
         // 判断一分钟内是否重复
         Long randomStrCreateTime = randomStrMap.get(resultStr);
         if (randomStrCreateTime != null &&
-                nowTime - randomStrCreateTime < Constant.RPC_SEQ_NO_NOT_REPEAT_INTERVAL) {
+                nowTime - randomStrCreateTime < 60 * 1000) {
             resultStr = createRandomString(len, nowTime);
         }
         randomStrMap.put(resultStr, nowTime);

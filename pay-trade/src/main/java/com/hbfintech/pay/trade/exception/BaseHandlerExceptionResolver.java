@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.Exception;
+package com.hbfintech.pay.trade.exception;
 
 
 import java.io.IOException;

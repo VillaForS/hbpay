@@ -3,7 +3,7 @@ package com.hbfintech.pay.trade.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
-import com.hbfintech.pay.trade.Exception.BaseHandlerExceptionResolver;
+import com.hbfintech.pay.trade.exception.BaseHandlerExceptionResolver;
 
 @Configuration
 public class ExceptionConfig {

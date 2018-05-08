@@ -1,15 +1,12 @@
 package com.hbfintech.pay.common.util;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.FieldPosition;
 
-/**
- * @Description: 金额工具类
- * @author dingzhiwei jmdhappy@126.com
- * @date 2017-07-05
- * @version V1.0
- * @Copyright: www.xxpay.org
- */
+import com.hbfintech.pay.common.constant.Constants;
+
+
 public class AmountUtil {
 
     /**
@@ -82,6 +79,30 @@ public class AmountUtil {
             return ss.substring(0, ss.length() - 3);
         else
             return ss;
+    }
+    
+    /**
+     * 
+     * <一句话功能简述> <功能详细描述>
+     * @param value
+     * @param format
+     * @return
+     */
+    public static String formatMoney(BigDecimal value, String format)
+    {
+        DecimalFormat myformat = new DecimalFormat();
+        myformat.applyPattern(format);
+        return myformat.format(value);
+    }
+
+    /**
+     * <一句话功能简述> <功能详细描述>
+     * @param value
+     * @return
+     */
+    public static String formatMoney(BigDecimal value)
+    {
+        return formatMoney(value,Constants.MONEY_FORMART);
     }
 
 }

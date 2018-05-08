@@ -15,7 +15,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hbfintech.pay.common.constant.Constant;
+import com.hbfintech.pay.common.constant.Constants;
 
 
 public class DateUtil {
@@ -166,7 +166,7 @@ public class DateUtil {
      */
     public static Timestamp getNextDay() {
         Calendar now = Calendar.getInstance();
-        now.add(Calendar.DAY_OF_MONTH, Constant.NUM_1);
+        now.add(Calendar.DAY_OF_MONTH, Constants.NUM_1);
         return new Timestamp(now.getTimeInMillis());
     }
 
@@ -261,7 +261,7 @@ public class DateUtil {
             SimpleDateFormat sdf = new SimpleDateFormat(pattern);
             try {
                 Date d = sdf.parse(date);
-                result = sdf.format(new Date(d.getTime() + days * Constant.DAY_MILL_SECONDS));
+                result = sdf.format(new Date(d.getTime() + days * Constants.DAY_MILL_SECONDS));
             } catch (ParseException e) {
                 LOGGER.error(e.getMessage(), e.getMessage());
             }

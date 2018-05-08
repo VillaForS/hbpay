@@ -44,6 +44,7 @@
 	<!-- third party -->
 	<lombok.version>1.16.20</lombok.version>
 	<log4j.version>1.2.17</log4j.version>
+	<log4j-to-slf4j.version>2.10.0</log4j-to-slf4j.version>
   </properties>
   
   <dependencyManagement> 
@@ -117,15 +118,27 @@
 		    <artifactId>log4j</artifactId>
 		    <version>${log4j.version}</version>
         </dependency>
+        <dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-to-slf4j</artifactId>
+			<version>${log4j-to-slf4j.version}</version>
+		</dependency>
 </dependencies>
+		<dependency>  
+		    <groupId>org.springframework.boot</groupId>  
+		    <artifactId>spring-boot-starter</artifactId>  
+		    <!-- 去除对默认日志的依赖 -->  
+		    <exclusions>  
+		        <exclusion>  
+		            <groupId>org.springframework.boot</groupId>  
+		            <artifactId>spring-boot-starter-logging</artifactId>  
+		        </exclusion>  
+		    </exclusions>  
+		</dependency>  
   </dependencyManagement>
 
   <!-- 默认child 工程都依赖的类，只能是所有工程的最小化依赖，child工程特定的依赖在child工程pom里添加-->
   <dependencies>
-    <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-logging</artifactId>
-     </dependency>
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
@@ -152,6 +165,11 @@
 			    <groupId>log4j</groupId>
 			    <artifactId>log4j</artifactId>
 			</dependency>
+			<dependency>
+			    <groupId>commons-codec</groupId>
+			    <artifactId>commons-codec</artifactId>
+            </dependency>
+			
   </dependencies>
   <build>
    <plugins>
