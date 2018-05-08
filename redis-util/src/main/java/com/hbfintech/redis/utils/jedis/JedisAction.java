@@ -1,4 +1,4 @@
-package com.hbfintech.redis.jedis;
+package com.hbfintech.redis.utils.jedis;
 
 import redis.clients.jedis.Jedis;
 

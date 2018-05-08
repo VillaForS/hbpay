@@ -7,7 +7,7 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名             修改时间            版本号                  描述
  */
-package com.hbfintech.redis.jedis.utils;
+package com.hbfintech.redis.utils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,8 +26,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
-import com.hbfintech.redis.jedis.JedisAction;
-import com.hbfintech.redis.jedis.JedisClient;
+import com.hbfintech.redis.utils.jedis.JedisAction;
+import com.hbfintech.redis.utils.jedis.JedisClient;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;

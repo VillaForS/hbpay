@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hbfintech.redis.concurrent.constants.LockBeanKeyConstants;
 import com.hbfintech.redis.concurrent.lock.RedisLock;
-import com.hbfintech.redis.jedis.JedisClient;
+import com.hbfintech.redis.utils.jedis.JedisClient;
 
 
 /**

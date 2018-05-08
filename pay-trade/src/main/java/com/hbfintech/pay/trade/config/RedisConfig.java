@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.hbfintech.redis.concurrent.lock.templateLock.TemplateLock;
 import com.hbfintech.redis.concurrent.lock.templateLock.TemplateLockImpl;
-import com.hbfintech.redis.jedis.JedisClient;
-import com.hbfintech.redis.jedis.impl.JedisClientImpl;
-import com.hbfintech.redis.jedis.utils.RedisCacheUtil;
+import com.hbfintech.redis.utils.RedisCacheUtil;
+import com.hbfintech.redis.utils.jedis.JedisClient;
+import com.hbfintech.redis.utils.jedis.impl.JedisClientImpl;
 
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;

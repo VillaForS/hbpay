@@ -1,4 +1,4 @@
-package com.hbfintech.redis.jedis;
+package com.hbfintech.redis.utils.jedis;
 
 public class RedisClientException extends RuntimeException {
     private static final long serialVersionUID = 7460934076911268418L;

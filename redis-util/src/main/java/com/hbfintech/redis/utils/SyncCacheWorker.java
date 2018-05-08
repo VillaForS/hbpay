@@ -7,7 +7,7 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名             修改时间            版本号                  描述
  */
-package com.hbfintech.redis.jedis.utils;
+package com.hbfintech.redis.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.hbfintech.redis.jedis.JedisAction;
+import com.hbfintech.redis.utils.jedis.JedisAction;
 
 import redis.clients.jedis.Jedis;
 

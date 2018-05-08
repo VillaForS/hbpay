@@ -5,8 +5,8 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.hbfintech.redis.jedis.JedisAction;
-import com.hbfintech.redis.jedis.JedisClient;
+import com.hbfintech.redis.utils.jedis.JedisAction;
+import com.hbfintech.redis.utils.jedis.JedisClient;
 
 import redis.clients.jedis.Jedis;
 

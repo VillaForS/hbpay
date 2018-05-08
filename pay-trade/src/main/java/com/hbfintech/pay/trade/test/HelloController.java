@@ -9,7 +9,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hbfintech.redis.jedis.utils.RedisCacheUtil;
+import com.hbfintech.redis.utils.RedisCacheUtil;
 
 @RestController
 public class HelloController {

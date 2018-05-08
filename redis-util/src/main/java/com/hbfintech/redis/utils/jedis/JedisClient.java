@@ -7,7 +7,7 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名             修改时间            版本号                  描述
  */
-package com.hbfintech.redis.jedis;
+package com.hbfintech.redis.utils.jedis;
 
 import redis.clients.jedis.Jedis;
 

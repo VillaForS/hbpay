@@ -7,7 +7,7 @@
  * <author>      <time>      <version>    <desc>
  * 修改人姓名             修改时间            版本号                  描述
  */
-package com.hbfintech.redis.jedis.impl;
+package com.hbfintech.redis.utils.jedis.impl;
 
 
 import org.slf4j.Logger;
@@ -15,9 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hbfintech.redis.jedis.JedisAction;
-import com.hbfintech.redis.jedis.JedisClient;
-import com.hbfintech.redis.jedis.RedisClientException;
+import com.hbfintech.redis.utils.jedis.JedisAction;
+import com.hbfintech.redis.utils.jedis.JedisClient;
+import com.hbfintech.redis.utils.jedis.RedisClientException;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
