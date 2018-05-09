@@ -1,15 +1,15 @@
 server:
-  port: 10888
-  context-path: /pay-trade
+  port: 10777
 
 management:
-  port: 10889
+  port: 10778
   context-path: /actuator
   security:
     enabled: false
 spring:
     application:
          name: pay-adapter
+         
       
     cloud:
       config:
@@ -18,7 +18,13 @@ spring:
           enabled: true
           service-id: pay-config
         fail-fast: true
-    
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: root
+      password: 111111
+      virtual-host: /payCenter
+        
 eureka:
   client:
     service-url:
@@ -30,10 +36,9 @@ eureka:
     
 logging:
   level:
-    org.springframework: error
+    org.springframework.cloud.config: debug
     
     
     
     
-
   

@@ -20,3 +20,7 @@ eureka:
     enable-self-preservation: false    
     #eviction-interval-timer-in-ms: 5000
     #response-cache-update-interval-ms: 10000 
+    
+logging:
+  level:
+    org.springframework: error

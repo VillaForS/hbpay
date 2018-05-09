@@ -17,7 +17,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-@EnableCaching
 public class payTradeApplication {
     public static void main(String[] args) {
     	new SpringApplicationBuilder(payTradeApplication.class).web(true).run(args);
