@@ -8,10 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     
-  <artifactId>payAdapter</artifactId>
+  <artifactId>pay-adapter</artifactId>
   <packaging>jar</packaging>
 
-  <name>payAdapter</name>
+  <name>pay-adapter</name>
   <url>http://maven.apache.org</url>
 
   <properties>
