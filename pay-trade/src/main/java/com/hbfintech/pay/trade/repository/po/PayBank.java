@@ -21,7 +21,7 @@ public class PayBank implements Serializable {
     private String bankName;
 
     /**
-     * 银行状态：0：正常 1：关闭
+     * 银行状态：0：关闭 1：正常
      *
      * @mbg.generated
      */
@@ -68,13 +68,6 @@ public class PayBank implements Serializable {
      * @mbg.generated
      */
     private Date updateTime;
-
-    /**
-     * 版本号
-     *
-     * @mbg.generated
-     */
-    private Integer version;
 
     private static final long serialVersionUID = 1L;
 
@@ -158,14 +151,6 @@ public class PayBank implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -182,7 +167,6 @@ public class PayBank implements Serializable {
         sb.append(", operName=").append(operName);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
-        sb.append(", version=").append(version);
         sb.append("]");
         return sb.toString();
     }
@@ -208,8 +192,7 @@ public class PayBank implements Serializable {
             && (this.getOperId() == null ? other.getOperId() == null : this.getOperId().equals(other.getOperId()))
             && (this.getOperName() == null ? other.getOperName() == null : this.getOperName().equals(other.getOperName()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getVersion() == null ? other.getVersion() == null : this.getVersion().equals(other.getVersion()));
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     @Override
@@ -226,7 +209,6 @@ public class PayBank implements Serializable {
         result = prime * result + ((getOperName() == null) ? 0 : getOperName().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
-        result = prime * result + ((getVersion() == null) ? 0 : getVersion().hashCode());
         return result;
     }
 }

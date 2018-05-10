@@ -10,8 +10,7 @@ public interface PayBankDao {
     int insertSelective(PayBank record);
 
     PayBank selectByPrimaryKey(Long bankId);
+    
+    PayBank  getBankByCode(String bankCode);
 
-    int updateByPrimaryKeySelective(PayBank record);
-
-    int updateByPrimaryKey(PayBank record);
 }

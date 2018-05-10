@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.config;
+package com.hbfintech.pay.trade.system.config;
 
 
 import java.sql.SQLException;

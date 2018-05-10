@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.config.condition;
+package com.hbfintech.pay.trade.system.config.condition;
 
 
 import org.springframework.context.annotation.Condition;

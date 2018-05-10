@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.config;
+package com.hbfintech.pay.trade.system.config;
 
 import javax.validation.Validation;
 import javax.validation.Validator;

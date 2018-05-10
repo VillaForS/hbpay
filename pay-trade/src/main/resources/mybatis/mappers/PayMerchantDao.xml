@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbfintech.pay.trade.repository.dao.PayMerchantDao">
+  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.po.PayMerchant">
+    <id column="mch_id" jdbcType="BIGINT" property="mchId" />
+    <result column="mch_code" jdbcType="VARCHAR" property="mchCode" />
+    <result column="mch_name" jdbcType="VARCHAR" property="mchName" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="valid" jdbcType="BIT" property="valid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mch_id, mch_code, mch_name, status, remark, valid, create_time, update_time, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_merchant
+    where mch_id = #{mchId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pay_merchant
+    where mch_id = #{mchId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.po.PayMerchant">
+    insert into pay_merchant (mch_id, mch_code, mch_name, 
+      status, remark, valid, 
+      create_time, update_time, version
+      )
+    values (#{mchId,jdbcType=BIGINT}, #{mchCode,jdbcType=VARCHAR}, #{mchName,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, #{valid,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{version,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.po.PayMerchant">
+    insert into pay_merchant
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mchId != null">
+        mch_id,
+      </if>
+      <if test="mchCode != null">
+        mch_code,
+      </if>
+      <if test="mchName != null">
+        mch_name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mchId != null">
+        #{mchId,jdbcType=BIGINT},
+      </if>
+      <if test="mchCode != null">
+        #{mchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mchName != null">
+        #{mchName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.po.PayMerchant">
+    update pay_merchant
+    <set>
+      <if test="mchCode != null">
+        mch_code = #{mchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mchName != null">
+        mch_name = #{mchName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where mch_id = #{mchId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.po.PayMerchant">
+    update pay_merchant
+    set mch_code = #{mchCode,jdbcType=VARCHAR},
+      mch_name = #{mchName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      valid = #{valid,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=INTEGER}
+    where mch_id = #{mchId,jdbcType=BIGINT}
+  </update>
+    <select id="getMchByCode" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_merchant
+    where mch_code=  #{mchCode],jdbcType=VARCHAR} and valid = 0
+  </select>
+</mapper>

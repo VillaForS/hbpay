@@ -23,4 +23,5 @@ eureka:
     
 logging:
   level:
-    org.springframework: error
+   # org.springframework: error
+    root: error

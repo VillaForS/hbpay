@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.servlet;
+package com.hbfintech.pay.trade.system.servlet;
 
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
