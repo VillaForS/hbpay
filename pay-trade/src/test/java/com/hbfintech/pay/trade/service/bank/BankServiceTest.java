@@ -22,7 +22,7 @@ public class BankServiceTest
 
     @Test
     public void testIsBankClosed() {
-        assertTrue(bankService.isBankOpen("ICBC"));
+        assertTrue(bankService.isBankOpen("ABC"));
     }
 }
 

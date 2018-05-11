@@ -11,6 +11,9 @@ public interface PayCacheNS
     //支付产品
     public static final String PROD=PAY_NS_PREFIX+"prod:";
     
+    //支付渠道
+    public static final String CHANNEL=PAY_NS_PREFIX+"channel:";
+    
     //商户
     public static final String MCH=PAY_NS_PREFIX+"mch:";
     

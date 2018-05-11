@@ -1,8 +1,9 @@
-package com.hbfintech.pay.trade.domain.bank;
+package com.hbfintech.pay.trade.domain.bank.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.hbfintech.pay.common.dto.NullObject;
 import com.hbfintech.pay.trade.dict.PayCacheKeys;
 import com.hbfintech.pay.trade.repository.dao.PayBankDao;
 import com.hbfintech.pay.trade.repository.po.PayBank;
@@ -19,7 +20,7 @@ public class BankCacheWorker extends SyncCacheWorker<PayBank,String>{
     PayBankDao payBankDao; 
     
     protected PayBank read(String bankCode) {
-        return redisCacheUtil.hgetBin(PayCacheKeys.BANK_VALIDBANKS, bankCode, PayBank.class);
+        return  redisCacheUtil.hgetBin(PayCacheKeys.BANK_VALIDBANKS, bankCode, PayBank.class);
     }
     
     protected PayBank write(String bankCode) { 

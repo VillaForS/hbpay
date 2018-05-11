@@ -25,7 +25,7 @@ public class PayBank implements Serializable {
      *
      * @mbg.generated
      */
-    private Byte bankStatus;
+    private Byte status;
 
     /**
      * 备注
@@ -33,6 +33,27 @@ public class PayBank implements Serializable {
      * @mbg.generated
      */
     private String remark;
+
+    /**
+     * 0：不开通 1：开通快捷 
+     *
+     * @mbg.generated
+     */
+    private Boolean kjOpen;
+
+    /**
+     * 0：不开通 1：开通代付
+     *
+     * @mbg.generated
+     */
+    private Boolean dfOpen;
+
+    /**
+     * 0：不开通 1：开通协议代扣
+     *
+     * @mbg.generated
+     */
+    private Boolean cdkOpen;
 
     /**
      * 删除状态：0：有效 1：失效
@@ -95,12 +116,12 @@ public class PayBank implements Serializable {
         this.bankName = bankName == null ? null : bankName.trim();
     }
 
-    public Byte getBankStatus() {
-        return bankStatus;
+    public Byte getStatus() {
+        return status;
     }
 
-    public void setBankStatus(Byte bankStatus) {
-        this.bankStatus = bankStatus;
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
     public String getRemark() {
@@ -109,6 +130,30 @@ public class PayBank implements Serializable {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public Boolean getKjOpen() {
+        return kjOpen;
+    }
+
+    public void setKjOpen(Boolean kjOpen) {
+        this.kjOpen = kjOpen;
+    }
+
+    public Boolean getDfOpen() {
+        return dfOpen;
+    }
+
+    public void setDfOpen(Boolean dfOpen) {
+        this.dfOpen = dfOpen;
+    }
+
+    public Boolean getCdkOpen() {
+        return cdkOpen;
+    }
+
+    public void setCdkOpen(Boolean cdkOpen) {
+        this.cdkOpen = cdkOpen;
     }
 
     public Boolean getValid() {
@@ -160,8 +205,11 @@ public class PayBank implements Serializable {
         sb.append(", bankId=").append(bankId);
         sb.append(", bankCode=").append(bankCode);
         sb.append(", bankName=").append(bankName);
-        sb.append(", bankStatus=").append(bankStatus);
+        sb.append(", status=").append(status);
         sb.append(", remark=").append(remark);
+        sb.append(", kjOpen=").append(kjOpen);
+        sb.append(", dfOpen=").append(dfOpen);
+        sb.append(", cdkOpen=").append(cdkOpen);
         sb.append(", valid=").append(valid);
         sb.append(", operId=").append(operId);
         sb.append(", operName=").append(operName);
@@ -186,8 +234,11 @@ public class PayBank implements Serializable {
         return (this.getBankId() == null ? other.getBankId() == null : this.getBankId().equals(other.getBankId()))
             && (this.getBankCode() == null ? other.getBankCode() == null : this.getBankCode().equals(other.getBankCode()))
             && (this.getBankName() == null ? other.getBankName() == null : this.getBankName().equals(other.getBankName()))
-            && (this.getBankStatus() == null ? other.getBankStatus() == null : this.getBankStatus().equals(other.getBankStatus()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
+            && (this.getKjOpen() == null ? other.getKjOpen() == null : this.getKjOpen().equals(other.getKjOpen()))
+            && (this.getDfOpen() == null ? other.getDfOpen() == null : this.getDfOpen().equals(other.getDfOpen()))
+            && (this.getCdkOpen() == null ? other.getCdkOpen() == null : this.getCdkOpen().equals(other.getCdkOpen()))
             && (this.getValid() == null ? other.getValid() == null : this.getValid().equals(other.getValid()))
             && (this.getOperId() == null ? other.getOperId() == null : this.getOperId().equals(other.getOperId()))
             && (this.getOperName() == null ? other.getOperName() == null : this.getOperName().equals(other.getOperName()))
@@ -202,8 +253,11 @@ public class PayBank implements Serializable {
         result = prime * result + ((getBankId() == null) ? 0 : getBankId().hashCode());
         result = prime * result + ((getBankCode() == null) ? 0 : getBankCode().hashCode());
         result = prime * result + ((getBankName() == null) ? 0 : getBankName().hashCode());
-        result = prime * result + ((getBankStatus() == null) ? 0 : getBankStatus().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
+        result = prime * result + ((getKjOpen() == null) ? 0 : getKjOpen().hashCode());
+        result = prime * result + ((getDfOpen() == null) ? 0 : getDfOpen().hashCode());
+        result = prime * result + ((getCdkOpen() == null) ? 0 : getCdkOpen().hashCode());
         result = prime * result + ((getValid() == null) ? 0 : getValid().hashCode());
         result = prime * result + ((getOperId() == null) ? 0 : getOperId().hashCode());
         result = prime * result + ((getOperName() == null) ? 0 : getOperName().hashCode());

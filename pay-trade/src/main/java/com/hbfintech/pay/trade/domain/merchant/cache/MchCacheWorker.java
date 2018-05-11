@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.domain.merchant;
+package com.hbfintech.pay.trade.domain.merchant.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

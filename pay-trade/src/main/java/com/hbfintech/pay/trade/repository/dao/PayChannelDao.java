@@ -1,5 +1,7 @@
 package com.hbfintech.pay.trade.repository.dao;
 
+import java.util.List;
+
 import com.hbfintech.pay.trade.repository.po.PayChannel;
 
 public interface PayChannelDao {
@@ -14,4 +16,8 @@ public interface PayChannelDao {
     int updateByPrimaryKeySelective(PayChannel record);
 
     int updateByPrimaryKey(PayChannel record);
+    
+    PayChannel getChannelByCode(String channelCode);
+    
+    List<PayChannel> getProdSupportChannels(String prodCode);
 }

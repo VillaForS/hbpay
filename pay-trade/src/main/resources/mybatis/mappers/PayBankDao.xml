@@ -5,8 +5,11 @@
     <id column="bank_id" jdbcType="BIGINT" property="bankId" />
     <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
     <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
-    <result column="bank_status" jdbcType="TINYINT" property="bankStatus" />
+    <result column="status" jdbcType="TINYINT" property="status" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="kj_open" jdbcType="BIT" property="kjOpen" />
+    <result column="df_open" jdbcType="BIT" property="dfOpen" />
+    <result column="cdk_open" jdbcType="BIT" property="cdkOpen" />
     <result column="valid" jdbcType="BIT" property="valid" />
     <result column="oper_id" jdbcType="BIGINT" property="operId" />
     <result column="oper_name" jdbcType="VARCHAR" property="operName" />
@@ -14,8 +17,8 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    bank_id, bank_code, bank_name, bank_status, remark, valid, oper_id, oper_name, create_time, 
-    update_time
+    bank_id, bank_code, bank_name, status, remark, kj_open, df_open, cdk_open, valid, 
+    oper_id, oper_name, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -31,11 +34,13 @@
     <selectKey keyProperty="bankId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pay_bank (bank_code, bank_name, bank_status, 
-      remark, valid, oper_id, oper_name, 
+    insert into pay_bank (bank_code, bank_name, status, 
+      remark, kj_open, df_open, cdk_open, 
+      valid, oper_id, oper_name, 
       create_time, update_time)
-    values (#{bankCode,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankStatus,jdbcType=TINYINT}, 
-      #{remark,jdbcType=VARCHAR}, #{valid,jdbcType=BIT}, #{operId,jdbcType=BIGINT}, #{operName,jdbcType=VARCHAR}, 
+    values (#{bankCode,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR}, #{kjOpen,jdbcType=BIT}, #{dfOpen,jdbcType=BIT}, #{cdkOpen,jdbcType=BIT}, 
+      #{valid,jdbcType=BIT}, #{operId,jdbcType=BIGINT}, #{operName,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.po.PayBank">
@@ -50,11 +55,20 @@
       <if test="bankName != null">
         bank_name,
       </if>
-      <if test="bankStatus != null">
-        bank_status,
+      <if test="status != null">
+        status,
       </if>
       <if test="remark != null">
         remark,
+      </if>
+      <if test="kjOpen != null">
+        kj_open,
+      </if>
+      <if test="dfOpen != null">
+        df_open,
+      </if>
+      <if test="cdkOpen != null">
+        cdk_open,
       </if>
       <if test="valid != null">
         valid,
@@ -79,11 +93,20 @@
       <if test="bankName != null">
         #{bankName,jdbcType=VARCHAR},
       </if>
-      <if test="bankStatus != null">
-        #{bankStatus,jdbcType=TINYINT},
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="kjOpen != null">
+        #{kjOpen,jdbcType=BIT},
+      </if>
+      <if test="dfOpen != null">
+        #{dfOpen,jdbcType=BIT},
+      </if>
+      <if test="cdkOpen != null">
+        #{cdkOpen,jdbcType=BIT},
       </if>
       <if test="valid != null">
         #{valid,jdbcType=BIT},
@@ -102,7 +125,65 @@
       </if>
     </trim>
   </insert>
-     <select id="getBankByCode" resultMap="BaseResultMap">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.po.PayBank">
+    update pay_bank
+    <set>
+      <if test="bankCode != null">
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="kjOpen != null">
+        kj_open = #{kjOpen,jdbcType=BIT},
+      </if>
+      <if test="dfOpen != null">
+        df_open = #{dfOpen,jdbcType=BIT},
+      </if>
+      <if test="cdkOpen != null">
+        cdk_open = #{cdkOpen,jdbcType=BIT},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=BIT},
+      </if>
+      <if test="operId != null">
+        oper_id = #{operId,jdbcType=BIGINT},
+      </if>
+      <if test="operName != null">
+        oper_name = #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where bank_id = #{bankId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.po.PayBank">
+    update pay_bank
+    set bank_code = #{bankCode,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      kj_open = #{kjOpen,jdbcType=BIT},
+      df_open = #{dfOpen,jdbcType=BIT},
+      cdk_open = #{cdkOpen,jdbcType=BIT},
+      valid = #{valid,jdbcType=BIT},
+      oper_id = #{operId,jdbcType=BIGINT},
+      oper_name = #{operName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where bank_id = #{bankId,jdbcType=BIGINT}
+  </update>
+   <select id="getBankByCode" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from pay_bank
