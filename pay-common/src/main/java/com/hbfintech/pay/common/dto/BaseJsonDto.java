@@ -1,4 +1,4 @@
-package com.hbfintech.pay.common.model;
+package com.hbfintech.pay.common.dto;
 
 import com.hbfintech.pay.common.enumm.RespCodeEnum;
 
@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BaseJsonModel extends ResponseModel {
+public class BaseJsonDto extends ResponseDto {
 
 	private String code;
 

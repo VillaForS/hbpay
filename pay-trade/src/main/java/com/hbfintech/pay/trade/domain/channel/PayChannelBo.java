@@ -23,7 +23,7 @@ public class PayChannelBo
     public Boolean isChannelOpen(String bankCode)
     {
         PayChannel channel = payChannelCacheWorker.find(bankCode);
-        if(null!=channel&&channel.getStatus()==PayConstants.OPEN) {
+        if(null!=channel&&PayConstants.OPEN ==channel.getStatus()) {
             return true;
         }
         return false;
@@ -33,6 +33,5 @@ public class PayChannelBo
         List<PayChannel> list = payProdChannelCacheWorker.find(prodCode);
         return list;
     }
-
 
 }

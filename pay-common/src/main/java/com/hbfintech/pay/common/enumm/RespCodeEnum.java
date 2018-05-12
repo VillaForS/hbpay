@@ -12,12 +12,16 @@ public enum RespCodeEnum {
 
 
     // 失败(01开始标示参数校验相关错误码)
-    PARAM_NOT_FOUND("PAM_0101", "参数非法"),
-
+    PARAM_WRONG("PAM_0001", "参数有误"),
+   
 
     // 业务相关
-    BIZ_WX_PAY_CREATE_FAIL("1003", "微信支付下单失败"),
-
+    BIZ_MCH_NOTOPEN("BIZ_0001", "商户未开通"),
+    BIZ_MCHPROD_NOTOPEN("BIZ_0002", "商户未开通此支付产品"),
+    BIZ_PROD_NOTOPEN("BIZ_0003","该支付产品未开通"),
+    BIZ_CHANNEL_NOTOPEN("BIZ_0004","该支付产品未开通支付渠道"),
+    BIZ_BANK_NOTOPEN("BIZ_0004","该银行未开通"),
+    
 
     // 未知错误
     SYSTEM_ERROR("SYS_9999", "系统异常");
@@ -49,5 +53,9 @@ public enum RespCodeEnum {
             }
         }
         return null;
+    }
+    
+    public Boolean equals(String code) {
+        return this.getCode().equals(code);
     }
 }

@@ -1,7 +1,7 @@
 package com.hbfintech.pay.common.dto;
 
 
-public class PageDto extends RequestDto
+public class PageRequestDto extends RequestDto
 {
     private static final long serialVersionUID = -7386397255752222874L;
 

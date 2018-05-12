@@ -10,7 +10,10 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Created by admin on 2016/5/4.
+ *  bean操作工具类
+ *
+ * @author zhush
+ * @since 1.0
  */
 public class BeanConvertUtils {
 
@@ -73,10 +76,10 @@ public class BeanConvertUtils {
     /**
      * 对象间的属性值拷贝
      *
-     * @param dest 目标对象
      * @param src  源对象
+     * @param dest 目标对象
      */
-    public static void copyProperties(Object dest, Object src) {
+    public static void copyProperties(Object src, Object dest) {
         if (src == null || dest == null) {
             return;
         }

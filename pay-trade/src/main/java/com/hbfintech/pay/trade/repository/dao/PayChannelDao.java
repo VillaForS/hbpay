@@ -19,5 +19,5 @@ public interface PayChannelDao {
     
     PayChannel getChannelByCode(String channelCode);
     
-    List<PayChannel> getProdSupportChannels(String prodCode);
+    List<PayChannel> getProdOpenChannels(String prodCode);
 }

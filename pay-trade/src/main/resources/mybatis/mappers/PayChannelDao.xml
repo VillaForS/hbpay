@@ -186,7 +186,7 @@
     where channel_code=  #{channel_code],jdbcType=VARCHAR} and valid = 0
   </select>
   
-        <select id="getProdSupportChannels" resultMap="BaseResultMap">
+        <select id="getProdOpenChannels" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from pay_channel

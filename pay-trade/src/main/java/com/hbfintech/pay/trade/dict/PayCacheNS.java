@@ -20,4 +20,7 @@ public interface PayCacheNS
     //交易
     public static final String TXN=PAY_NS_PREFIX+"txn:";
     
+    //字典
+    public static final String DICT=PAY_NS_PREFIX+"dict:";
+    
 }

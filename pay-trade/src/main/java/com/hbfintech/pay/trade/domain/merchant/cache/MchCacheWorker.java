@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hbfintech.pay.trade.dict.PayCacheKeys;
-import com.hbfintech.pay.trade.dict.PayCacheNS;
 import com.hbfintech.pay.trade.repository.dao.PayMerchantDao;
 import com.hbfintech.pay.trade.repository.po.PayMerchant;
 import com.hbfintech.redis.utils.RedisCacheUtil;

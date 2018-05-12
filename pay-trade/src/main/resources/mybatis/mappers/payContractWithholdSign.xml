@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbfintech.pay.trade.repository.dao.payContractWithholdSign">
+  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+    <id column="withhold_sign_id" jdbcType="BIGINT" property="withholdSignId" />
+    <result column="withhold_sign_no" jdbcType="VARCHAR" property="withholdSignNo" />
+    <result column="mch_code" jdbcType="VARCHAR" property="mchCode" />
+    <result column="mch_req_no" jdbcType="VARCHAR" property="mchReqNo" />
+    <result column="mch_req_time" jdbcType="TIMESTAMP" property="mchReqTime" />
+    <result column="card_no" jdbcType="VARCHAR" property="cardNo" />
+    <result column="card_type" jdbcType="CHAR" property="cardType" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="cert_name" jdbcType="VARCHAR" property="certName" />
+    <result column="cert_no" jdbcType="VARCHAR" property="certNo" />
+    <result column="cert_type" jdbcType="TINYINT" property="certType" />
+    <result column="auth_token" jdbcType="VARCHAR" property="authToken" />
+    <result column="protocol_no" jdbcType="VARCHAR" property="protocolNo" />
+    <result column="resp_code" jdbcType="VARCHAR" property="respCode" />
+    <result column="resp_msg" jdbcType="VARCHAR" property="respMsg" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="channel_req_no" jdbcType="VARCHAR" property="channelReqNo" />
+    <result column="channel_resp_code" jdbcType="VARCHAR" property="channelRespCode" />
+    <result column="channel_resp_msg" jdbcType="VARCHAR" property="channelRespMsg" />
+    <result column="channel_succ_time" jdbcType="TIMESTAMP" property="channelSuccTime" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="valid" jdbcType="BIT" property="valid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="oper_id" jdbcType="BIGINT" property="operId" />
+    <result column="oper_remark" jdbcType="VARCHAR" property="operRemark" />
+    <result column="oper_time" jdbcType="TIMESTAMP" property="operTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    withhold_sign_id, withhold_sign_no, mch_code, mch_req_no, mch_req_time, card_no, 
+    card_type, mobile, cert_name, cert_no, cert_type, auth_token, protocol_no, resp_code, 
+    resp_msg, channel_code, channel_req_no, channel_resp_code, channel_resp_msg, channel_succ_time, 
+    status, remark, valid, create_time, update_time, oper_id, oper_remark, oper_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_contract_withhold_sign
+    where withhold_sign_id = #{withholdSignId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pay_contract_withhold_sign
+    where withhold_sign_id = #{withholdSignId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+    <selectKey keyProperty="withholdSignId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into pay_contract_withhold_sign (withhold_sign_no, mch_code, mch_req_no, 
+      mch_req_time, card_no, card_type, 
+      mobile, cert_name, cert_no, 
+      cert_type, auth_token, protocol_no, 
+      resp_code, resp_msg, channel_code, 
+      channel_req_no, channel_resp_code, channel_resp_msg, 
+      channel_succ_time, status, remark, 
+      valid, create_time, update_time, 
+      oper_id, oper_remark, oper_time
+      )
+    values (#{withholdSignNo,jdbcType=VARCHAR}, #{mchCode,jdbcType=VARCHAR}, #{mchReqNo,jdbcType=VARCHAR}, 
+      #{mchReqTime,jdbcType=TIMESTAMP}, #{cardNo,jdbcType=VARCHAR}, #{cardType,jdbcType=CHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{certName,jdbcType=VARCHAR}, #{certNo,jdbcType=VARCHAR}, 
+      #{certType,jdbcType=TINYINT}, #{authToken,jdbcType=VARCHAR}, #{protocolNo,jdbcType=VARCHAR}, 
+      #{respCode,jdbcType=VARCHAR}, #{respMsg,jdbcType=VARCHAR}, #{channelCode,jdbcType=VARCHAR}, 
+      #{channelReqNo,jdbcType=VARCHAR}, #{channelRespCode,jdbcType=VARCHAR}, #{channelRespMsg,jdbcType=VARCHAR}, 
+      #{channelSuccTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, 
+      #{valid,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{operId,jdbcType=BIGINT}, #{operRemark,jdbcType=VARCHAR}, #{operTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+    <selectKey keyProperty="withholdSignId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into pay_contract_withhold_sign
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="withholdSignNo != null">
+        withhold_sign_no,
+      </if>
+      <if test="mchCode != null">
+        mch_code,
+      </if>
+      <if test="mchReqNo != null">
+        mch_req_no,
+      </if>
+      <if test="mchReqTime != null">
+        mch_req_time,
+      </if>
+      <if test="cardNo != null">
+        card_no,
+      </if>
+      <if test="cardType != null">
+        card_type,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="certName != null">
+        cert_name,
+      </if>
+      <if test="certNo != null">
+        cert_no,
+      </if>
+      <if test="certType != null">
+        cert_type,
+      </if>
+      <if test="authToken != null">
+        auth_token,
+      </if>
+      <if test="protocolNo != null">
+        protocol_no,
+      </if>
+      <if test="respCode != null">
+        resp_code,
+      </if>
+      <if test="respMsg != null">
+        resp_msg,
+      </if>
+      <if test="channelCode != null">
+        channel_code,
+      </if>
+      <if test="channelReqNo != null">
+        channel_req_no,
+      </if>
+      <if test="channelRespCode != null">
+        channel_resp_code,
+      </if>
+      <if test="channelRespMsg != null">
+        channel_resp_msg,
+      </if>
+      <if test="channelSuccTime != null">
+        channel_succ_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="operId != null">
+        oper_id,
+      </if>
+      <if test="operRemark != null">
+        oper_remark,
+      </if>
+      <if test="operTime != null">
+        oper_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="withholdSignNo != null">
+        #{withholdSignNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mchCode != null">
+        #{mchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mchReqNo != null">
+        #{mchReqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mchReqTime != null">
+        #{mchReqTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardNo != null">
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="certName != null">
+        #{certName,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null">
+        #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        #{certType,jdbcType=TINYINT},
+      </if>
+      <if test="authToken != null">
+        #{authToken,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolNo != null">
+        #{protocolNo,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null">
+        #{respCode,jdbcType=VARCHAR},
+      </if>
+      <if test="respMsg != null">
+        #{respMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCode != null">
+        #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelReqNo != null">
+        #{channelReqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelRespCode != null">
+        #{channelRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelRespMsg != null">
+        #{channelRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSuccTime != null">
+        #{channelSuccTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operId != null">
+        #{operId,jdbcType=BIGINT},
+      </if>
+      <if test="operRemark != null">
+        #{operRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="operTime != null">
+        #{operTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+    update pay_contract_withhold_sign
+    <set>
+      <if test="withholdSignNo != null">
+        withhold_sign_no = #{withholdSignNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mchCode != null">
+        mch_code = #{mchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mchReqNo != null">
+        mch_req_no = #{mchReqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="mchReqTime != null">
+        mch_req_time = #{mchReqTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cardNo != null">
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        card_type = #{cardType,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="certName != null">
+        cert_name = #{certName,jdbcType=VARCHAR},
+      </if>
+      <if test="certNo != null">
+        cert_no = #{certNo,jdbcType=VARCHAR},
+      </if>
+      <if test="certType != null">
+        cert_type = #{certType,jdbcType=TINYINT},
+      </if>
+      <if test="authToken != null">
+        auth_token = #{authToken,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolNo != null">
+        protocol_no = #{protocolNo,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null">
+        resp_code = #{respCode,jdbcType=VARCHAR},
+      </if>
+      <if test="respMsg != null">
+        resp_msg = #{respMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCode != null">
+        channel_code = #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelReqNo != null">
+        channel_req_no = #{channelReqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="channelRespCode != null">
+        channel_resp_code = #{channelRespCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelRespMsg != null">
+        channel_resp_msg = #{channelRespMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSuccTime != null">
+        channel_succ_time = #{channelSuccTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operId != null">
+        oper_id = #{operId,jdbcType=BIGINT},
+      </if>
+      <if test="operRemark != null">
+        oper_remark = #{operRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="operTime != null">
+        oper_time = #{operTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where withhold_sign_id = #{withholdSignId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+    update pay_contract_withhold_sign
+    set withhold_sign_no = #{withholdSignNo,jdbcType=VARCHAR},
+      mch_code = #{mchCode,jdbcType=VARCHAR},
+      mch_req_no = #{mchReqNo,jdbcType=VARCHAR},
+      mch_req_time = #{mchReqTime,jdbcType=TIMESTAMP},
+      card_no = #{cardNo,jdbcType=VARCHAR},
+      card_type = #{cardType,jdbcType=CHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      cert_name = #{certName,jdbcType=VARCHAR},
+      cert_no = #{certNo,jdbcType=VARCHAR},
+      cert_type = #{certType,jdbcType=TINYINT},
+      auth_token = #{authToken,jdbcType=VARCHAR},
+      protocol_no = #{protocolNo,jdbcType=VARCHAR},
+      resp_code = #{respCode,jdbcType=VARCHAR},
+      resp_msg = #{respMsg,jdbcType=VARCHAR},
+      channel_code = #{channelCode,jdbcType=VARCHAR},
+      channel_req_no = #{channelReqNo,jdbcType=VARCHAR},
+      channel_resp_code = #{channelRespCode,jdbcType=VARCHAR},
+      channel_resp_msg = #{channelRespMsg,jdbcType=VARCHAR},
+      channel_succ_time = #{channelSuccTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      valid = #{valid,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      oper_id = #{operId,jdbcType=BIGINT},
+      oper_remark = #{operRemark,jdbcType=VARCHAR},
+      oper_time = #{operTime,jdbcType=TIMESTAMP}
+    where withhold_sign_id = #{withholdSignId,jdbcType=BIGINT}
+  </update>
+</mapper>

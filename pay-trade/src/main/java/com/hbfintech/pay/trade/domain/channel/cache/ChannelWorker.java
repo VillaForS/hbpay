@@ -19,14 +19,14 @@ public class ChannelWorker extends SyncCacheWorker<PayChannel,String>{
     PayChannelDao payChannelDao; 
     
     protected PayChannel read(String channelCode) {
-        return  redisCacheUtil.hgetBin(PayCacheKeys.CHANNEL_VALIDCHANNELS, channelCode, PayChannel.class);
+        return  redisCacheUtil.hgetBin(PayCacheKeys.CHANNEL_VALID_CHANNELS, channelCode, PayChannel.class);
     }
     
     protected PayChannel write(String channelCode) { 
         
          PayChannel channel = payChannelDao.getChannelByCode(channelCode);
          if(null!=channel) {
-             redisCacheUtil.hsetBin(PayCacheKeys.CHANNEL_VALIDCHANNELS, channelCode, channel);
+             redisCacheUtil.hsetBin(PayCacheKeys.CHANNEL_VALID_CHANNELS, channelCode, channel);
          }
          return channel;
     }

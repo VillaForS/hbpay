@@ -56,10 +56,12 @@
         <!-- Mapper接口生成 -->
         <javaClientGenerator targetPackage="com.hbfintech.pay.trade.repository.dao" targetProject="pay-trade/src/main/java" type="XMLMAPPER"/>
 
-
+ 
         <table tableName="pay_bank"  mapperName="PayBankDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="bank_id" sqlStatement="Mysql" identity="true"/></table>
-        <!-- 
+       <table tableName="pay_bank_product"  mapperName="PayBankProductDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="bank_prod_id" sqlStatement="Mysql" identity="true"/></table>
+       <!-- 
         <table tableName="pay_product"  mapperName="PayProductDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="prod_id" sqlStatement="Mysql" identity="true"/></table>
            
@@ -71,9 +73,15 @@
           
         <table tableName="pay_merchant_product"  mapperName="payMerchantProductDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="mch_prod_id" sqlStatement="Mysql" identity="true"/></table>
-         
+       
          <table tableName="pay_channel_bank"  mapperName="PayChannelBankDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="channel_bank_id" sqlStatement="Mysql" identity="true"/></table>
-             -->  
+          
+         <table tableName="pay_dict"  mapperName="PayDictDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="dict_id" sqlStatement="Mysql" identity="true"/></table>
+          
+           <table tableName="pay_contract_withhold_sign"  mapperName="payContractWithholdSign" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="withhold_sign_id" sqlStatement="Mysql" identity="true"/></table>
+         -->    
     </context>
 </generatorConfiguration>

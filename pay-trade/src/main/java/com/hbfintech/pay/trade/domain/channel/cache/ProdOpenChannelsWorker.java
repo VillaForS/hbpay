@@ -22,16 +22,14 @@ public class ProdOpenChannelsWorker extends SyncCacheWorker<List<PayChannel>,Str
     PayChannelDao payChannelDao; 
     
     protected List<PayChannel> read(String prodCode) {
-         String channels= redisCacheUtil.hgetBin(PayCacheKeys.CHANNEL_VALIDCHANNELS, prodCode, String.class);
+         String channels= redisCacheUtil.hgetBin(PayCacheKeys.CHANNEL_VALID_CHANNELS, prodCode, String.class);
          return JSON.parseArray(channels, PayChannel.class);
     }
     
     protected List<PayChannel> write(String prodCode) { 
         
-         List<PayChannel> channels = payChannelDao.getProdSupportChannels(prodCode);
-         if(null!=channels) {
-             redisCacheUtil.hsetBin(PayCacheKeys.CHANNEL_VALIDCHANNELS, prodCode, JSON.toJSONString(channels));
-         }
+         List<PayChannel> channels = payChannelDao.getProdOpenChannels(prodCode);
+         redisCacheUtil.hsetBin(PayCacheKeys.CHANNEL_VALID_CHANNELS, prodCode, JSON.toJSONString(channels));
          return channels;
     }
 

@@ -12,6 +12,14 @@ import com.hbfintech.pay.trade.repository.po.PayMerchantProduct;
 import com.hbfintech.redis.utils.RedisCacheUtil;
 import com.hbfintech.redis.utils.SyncCacheWorker;
 
+/**
+ * 
+ * 商户产品Worker
+ * <功能详细描述>
+ *
+ * @author zhush
+ * @since 1.0
+ */
 @Component 
 public class MchProdCacheWorker extends SyncCacheWorker<PayMerchantProduct,Map<String,String>>{
     
@@ -21,11 +29,11 @@ public class MchProdCacheWorker extends SyncCacheWorker<PayMerchantProduct,Map<S
     @Autowired
     PayMerchantProductDao payMerchantProductDao; 
     
-    protected PayMerchantProduct read(HashMap<String,String> map) {
+    protected PayMerchantProduct read(Map<String,String> map) {
         return redisCacheUtil.hgetBin(PayCacheKeys.MCH_PROD, map.get("mchCode")+map.get("prodCode"), PayMerchantProduct.class);
     }
     
-    protected PayMerchantProduct write(HashMap<String,String> map) { 
+    protected PayMerchantProduct write(Map<String,String> map) { 
         PayMerchantProduct mchProd = payMerchantProductDao.getMchProd(map.get("mchCode"), map.get("prodCode"));
          if(null!=mchProd) {
              redisCacheUtil.hsetBin(PayCacheKeys.MCH_PROD, map.get("mchCode")+map.get("prodCode"), mchProd);

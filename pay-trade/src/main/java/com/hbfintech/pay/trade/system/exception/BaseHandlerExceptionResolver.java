@@ -19,10 +19,10 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.hbfintech.pay.common.dto.BaseJsonDto;
 import com.hbfintech.pay.common.enumm.RespCodeEnum;
 import com.hbfintech.pay.common.exception.BizException;
 import com.hbfintech.pay.common.log.ExceptionLogger;
-import com.hbfintech.pay.common.model.BaseJsonModel;
 
 /**
  * 通用的异常处理类，同时支持页面和json、jsonp
@@ -59,7 +59,7 @@ public class BaseHandlerExceptionResolver extends SimpleMappingExceptionResolver
 			ExceptionLogger.error("BaseHandlerExceptionResolver","",ex);     
 			PrintWriter writer = response.getWriter(); 
 			
-			BaseJsonModel model= new BaseJsonModel();
+			BaseJsonDto model= new BaseJsonDto();
 			model.setRespInfo(RespCodeEnum.SYSTEM_ERROR);
 			
 		   if (ex instanceof MethodArgumentNotValidException)

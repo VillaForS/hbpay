@@ -3,8 +3,8 @@ package com.hbfintech.pay.trade.repository.po;
 import java.io.Serializable;
 import java.util.Date;
 
-public class PayBank implements Serializable {
-    private Long bankId;
+public class PayBankProduct implements Serializable {
+    private Long bankProdId;
 
     /**
      * 银行编号
@@ -19,6 +19,20 @@ public class PayBank implements Serializable {
      * @mbg.generated
      */
     private String bankName;
+
+    /**
+     * 产品编号
+     *
+     * @mbg.generated
+     */
+    private String prodCode;
+
+    /**
+     * 开通状态：0：关闭 1：正常
+     *
+     * @mbg.generated
+     */
+    private Byte status;
 
     /**
      * 备注
@@ -64,12 +78,12 @@ public class PayBank implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getBankId() {
-        return bankId;
+    public Long getBankProdId() {
+        return bankProdId;
     }
 
-    public void setBankId(Long bankId) {
-        this.bankId = bankId;
+    public void setBankProdId(Long bankProdId) {
+        this.bankProdId = bankProdId;
     }
 
     public String getBankCode() {
@@ -86,6 +100,22 @@ public class PayBank implements Serializable {
 
     public void setBankName(String bankName) {
         this.bankName = bankName == null ? null : bankName.trim();
+    }
+
+    public String getProdCode() {
+        return prodCode;
+    }
+
+    public void setProdCode(String prodCode) {
+        this.prodCode = prodCode == null ? null : prodCode.trim();
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
     public String getRemark() {
@@ -142,9 +172,11 @@ public class PayBank implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", bankId=").append(bankId);
+        sb.append(", bankProdId=").append(bankProdId);
         sb.append(", bankCode=").append(bankCode);
         sb.append(", bankName=").append(bankName);
+        sb.append(", prodCode=").append(prodCode);
+        sb.append(", status=").append(status);
         sb.append(", remark=").append(remark);
         sb.append(", valid=").append(valid);
         sb.append(", operId=").append(operId);
@@ -166,10 +198,12 @@ public class PayBank implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        PayBank other = (PayBank) that;
-        return (this.getBankId() == null ? other.getBankId() == null : this.getBankId().equals(other.getBankId()))
+        PayBankProduct other = (PayBankProduct) that;
+        return (this.getBankProdId() == null ? other.getBankProdId() == null : this.getBankProdId().equals(other.getBankProdId()))
             && (this.getBankCode() == null ? other.getBankCode() == null : this.getBankCode().equals(other.getBankCode()))
             && (this.getBankName() == null ? other.getBankName() == null : this.getBankName().equals(other.getBankName()))
+            && (this.getProdCode() == null ? other.getProdCode() == null : this.getProdCode().equals(other.getProdCode()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
             && (this.getValid() == null ? other.getValid() == null : this.getValid().equals(other.getValid()))
             && (this.getOperId() == null ? other.getOperId() == null : this.getOperId().equals(other.getOperId()))
@@ -182,9 +216,11 @@ public class PayBank implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getBankId() == null) ? 0 : getBankId().hashCode());
+        result = prime * result + ((getBankProdId() == null) ? 0 : getBankProdId().hashCode());
         result = prime * result + ((getBankCode() == null) ? 0 : getBankCode().hashCode());
         result = prime * result + ((getBankName() == null) ? 0 : getBankName().hashCode());
+        result = prime * result + ((getProdCode() == null) ? 0 : getProdCode().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
         result = prime * result + ((getValid() == null) ? 0 : getValid().hashCode());
         result = prime * result + ((getOperId() == null) ? 0 : getOperId().hashCode());

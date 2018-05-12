@@ -15,5 +15,5 @@ public interface PayBankDao {
 
     int updateByPrimaryKey(PayBank record);
     
-    PayBank  getBankByCode(String bankCode);
+    PayBank getBankByCode(String bankCode);
 }
