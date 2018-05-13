@@ -13,15 +13,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class AdptCwhSignReqDto extends RequestDto
 {
-    //商户编码
-    @NotEmpty
-    private String mchCode;
-    //商户请求流水号
-    @NotEmpty
-    private String mchReqNo;
-    //商户请求时间
-    @NotEmpty
-    private Date mchReqTime;
     //签约卡号
     @NotEmpty
     private String cardNo;

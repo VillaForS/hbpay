@@ -8,7 +8,8 @@ import org.apache.commons.lang3.StringUtils;
 
 
 public enum SeqEnum {
-    PAY_CONTRSCT_WITHHOLD_SIGN("pay_contract_withhold_sign", "CWHSGN", "用户信息注册表编号"),
+    PAY_CONTRACT_WITHHOLD_SIGN("pay_contract_withhold_sign", "CWHSGN", "协议代付签约表编号"),
+    PAY_CONTRSCT_WITHHOLD_TXN("pay_contract_withhold_txn", "CWHTXN", "协议代付交易表编号"),
 	DEFAULT("default","PAY","默认");
 
     /**

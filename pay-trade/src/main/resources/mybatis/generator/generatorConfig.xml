@@ -79,9 +79,12 @@
           
          <table tableName="pay_dict"  mapperName="PayDictDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="dict_id" sqlStatement="Mysql" identity="true"/></table>
-                  -->     
+                      
            <table tableName="pay_contract_withhold_sign"  mapperName="PayContractWithholdSignDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="withhold_sign_id" sqlStatement="Mysql" identity="true"/></table>
+           -->
+          <table tableName="pay_contract_withhold_txn"  mapperName="PayContractWithholdTxnDao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" ><property name="useActualColumnNames" value="false" /> <generatedKey column="withhold_txn_id" sqlStatement="Mysql" identity="true"/></table>
 
          
     </context>

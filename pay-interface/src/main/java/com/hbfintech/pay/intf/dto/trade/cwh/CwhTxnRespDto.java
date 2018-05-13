@@ -1,14 +1,13 @@
 package com.hbfintech.pay.intf.dto.trade.cwh;
 
-import com.hbfintech.pay.intf.dto.trade.ResponseDto;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class CwhSignRespDto extends ResponseDto
-{
+public class CwhTxnRespDto {
+	 //渠道编号
+    private String channelCode;
     //支付中心标准返回码
     private String respCode;
     //支付中心标准返回描述

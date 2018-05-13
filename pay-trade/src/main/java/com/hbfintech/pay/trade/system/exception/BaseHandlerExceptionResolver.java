@@ -21,7 +21,7 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.hbfintech.pay.common.exception.BizException;
 import com.hbfintech.pay.common.log.ExceptionLogger;
-import com.hbfintech.pay.intf.dto.ResponseDto;
+import com.hbfintech.pay.intf.dto.trade.ResponseDto;
 import com.hbfintech.pay.intf.enumm.RespCodeEnum;
 
 /**
