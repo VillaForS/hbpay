@@ -18,11 +18,11 @@ import com.hbfintech.pay.trade.domain.bank.BankBo;
 public class BankServiceTest
 {
     @Autowired
-    BankBo bankService;
+    BankBo bankbo;
 
     @Test
     public void testIsBankClosed() {
-        assertTrue(bankService.isBankOpen("ABC"));
+        assertTrue(bankbo.isProdBankOpen("CDK","ABC"));
     }
 }
 

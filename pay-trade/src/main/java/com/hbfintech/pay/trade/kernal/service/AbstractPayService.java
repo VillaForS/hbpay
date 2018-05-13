@@ -1,9 +1,9 @@
-package com.hbfintech.pay.trade.service.txn.service;
+package com.hbfintech.pay.trade.kernal.service;
 
 import com.hbfintech.pay.common.dto.RequestDto;
 import com.hbfintech.pay.common.dto.ResponseDto;
 import com.hbfintech.pay.common.enumm.RespCodeEnum;
-import com.hbfintech.pay.trade.service.txn.processor.TxnProcessor;
+import com.hbfintech.pay.trade.kernal.processor.TxnProcessor;
 
 /**
  * 抽象的服务流程
@@ -12,7 +12,7 @@ import com.hbfintech.pay.trade.service.txn.processor.TxnProcessor;
  * @author zhush
  * @since 1.0
  */
-public  abstract class AbstractPayService
+public  abstract class AbstractPayService implements PayService
 {
 
      TxnProcessor processor;

@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.service.checker.base;
+package com.hbfintech.pay.trade.kernal.checker;
 
 public interface Checker
 {

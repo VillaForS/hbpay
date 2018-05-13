@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.service.checker.base;
+package com.hbfintech.pay.trade.service.common.checker;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import com.hbfintech.pay.common.enumm.RespCodeEnum;
 import com.hbfintech.pay.trade.domain.merchant.MerchantBo;
+import com.hbfintech.pay.trade.kernal.checker.CheckContext;
+import com.hbfintech.pay.trade.kernal.checker.CheckResult;
 
 /**
  * 
@@ -16,7 +18,7 @@ import com.hbfintech.pay.trade.domain.merchant.MerchantBo;
  */
 @Component
 @Order(4)
-public class MerchantProdChecker implements Checker
+public class MerchantProdChecker implements ComnChecker
 {
 
     @Autowired

@@ -17,5 +17,8 @@ public class ResponseDto {
         this.msg=respEnum.getMessage();
     }
     
-    
+    public  ResponseDto(RespCodeEnum respEnum) {
+        this.code=respEnum.getCode();
+        this.msg=respEnum.getMessage();
+    }
 }
