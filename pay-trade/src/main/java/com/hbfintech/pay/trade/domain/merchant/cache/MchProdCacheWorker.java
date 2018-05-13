@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.hbfintech.pay.trade.dict.PayCacheKeys;
 import com.hbfintech.pay.trade.repository.dao.PayMerchantProductDao;
-import com.hbfintech.pay.trade.repository.po.PayMerchantProduct;
+import com.hbfintech.pay.trade.repository.entity.PayMerchantProduct;
 import com.hbfintech.redis.utils.RedisCacheUtil;
 import com.hbfintech.redis.utils.SyncCacheWorker;
 

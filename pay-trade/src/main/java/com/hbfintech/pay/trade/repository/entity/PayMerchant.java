@@ -1,44 +1,27 @@
-package com.hbfintech.pay.trade.repository.po;
+package com.hbfintech.pay.trade.repository.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class PayChannel implements Serializable {
-    private Long channelId;
+public class PayMerchant implements Serializable {
+    private Long mchId;
 
     /**
-     * 支付渠道编码
+     * 商户编码
      *
      * @mbg.generated
      */
-    private String channelCode;
+    private String mchCode;
 
     /**
-     * 产品编码
-实名认证：AUTH
-快捷支付：KJ
-代扣：DK
-协议代扣：CDK
-对私代付： TCDF
-对公代付：TBDF
-微信支付：WECHAT
-支付宝支付-JS：ALIPAY
-B2B网银充值：B2BWEB
-B2B代付：B2BDF
+     * 商户名称
      *
      * @mbg.generated
      */
-    private String prodCode;
+    private String mchName;
 
     /**
-     * 渠道名称
-     *
-     * @mbg.generated
-     */
-    private String channelName;
-
-    /**
-     * 渠道状态：0：关闭 1：开通
+     * 商户状态：0：未开通 1：已开通
      *
      * @mbg.generated
      */
@@ -73,20 +56,6 @@ B2B代付：B2BDF
     private Date updateTime;
 
     /**
-     * 操作人
-     *
-     * @mbg.generated
-     */
-    private Long operId;
-
-    /**
-     * 操作人名称
-     *
-     * @mbg.generated
-     */
-    private String operName;
-
-    /**
      * 版本号
      *
      * @mbg.generated
@@ -95,36 +64,28 @@ B2B代付：B2BDF
 
     private static final long serialVersionUID = 1L;
 
-    public Long getChannelId() {
-        return channelId;
+    public Long getMchId() {
+        return mchId;
     }
 
-    public void setChannelId(Long channelId) {
-        this.channelId = channelId;
+    public void setMchId(Long mchId) {
+        this.mchId = mchId;
     }
 
-    public String getChannelCode() {
-        return channelCode;
+    public String getMchCode() {
+        return mchCode;
     }
 
-    public void setChannelCode(String channelCode) {
-        this.channelCode = channelCode == null ? null : channelCode.trim();
+    public void setMchCode(String mchCode) {
+        this.mchCode = mchCode == null ? null : mchCode.trim();
     }
 
-    public String getProdCode() {
-        return prodCode;
+    public String getMchName() {
+        return mchName;
     }
 
-    public void setProdCode(String prodCode) {
-        this.prodCode = prodCode == null ? null : prodCode.trim();
-    }
-
-    public String getChannelName() {
-        return channelName;
-    }
-
-    public void setChannelName(String channelName) {
-        this.channelName = channelName == null ? null : channelName.trim();
+    public void setMchName(String mchName) {
+        this.mchName = mchName == null ? null : mchName.trim();
     }
 
     public Byte getStatus() {
@@ -167,22 +128,6 @@ B2B代付：B2BDF
         this.updateTime = updateTime;
     }
 
-    public Long getOperId() {
-        return operId;
-    }
-
-    public void setOperId(Long operId) {
-        this.operId = operId;
-    }
-
-    public String getOperName() {
-        return operName;
-    }
-
-    public void setOperName(String operName) {
-        this.operName = operName == null ? null : operName.trim();
-    }
-
     public Integer getVersion() {
         return version;
     }
@@ -197,17 +142,14 @@ B2B代付：B2BDF
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", channelId=").append(channelId);
-        sb.append(", channelCode=").append(channelCode);
-        sb.append(", prodCode=").append(prodCode);
-        sb.append(", channelName=").append(channelName);
+        sb.append(", mchId=").append(mchId);
+        sb.append(", mchCode=").append(mchCode);
+        sb.append(", mchName=").append(mchName);
         sb.append(", status=").append(status);
         sb.append(", remark=").append(remark);
         sb.append(", valid=").append(valid);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
-        sb.append(", operId=").append(operId);
-        sb.append(", operName=").append(operName);
         sb.append(", version=").append(version);
         sb.append("]");
         return sb.toString();
@@ -224,18 +166,15 @@ B2B代付：B2BDF
         if (getClass() != that.getClass()) {
             return false;
         }
-        PayChannel other = (PayChannel) that;
-        return (this.getChannelId() == null ? other.getChannelId() == null : this.getChannelId().equals(other.getChannelId()))
-            && (this.getChannelCode() == null ? other.getChannelCode() == null : this.getChannelCode().equals(other.getChannelCode()))
-            && (this.getProdCode() == null ? other.getProdCode() == null : this.getProdCode().equals(other.getProdCode()))
-            && (this.getChannelName() == null ? other.getChannelName() == null : this.getChannelName().equals(other.getChannelName()))
+        PayMerchant other = (PayMerchant) that;
+        return (this.getMchId() == null ? other.getMchId() == null : this.getMchId().equals(other.getMchId()))
+            && (this.getMchCode() == null ? other.getMchCode() == null : this.getMchCode().equals(other.getMchCode()))
+            && (this.getMchName() == null ? other.getMchName() == null : this.getMchName().equals(other.getMchName()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
             && (this.getValid() == null ? other.getValid() == null : this.getValid().equals(other.getValid()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getOperId() == null ? other.getOperId() == null : this.getOperId().equals(other.getOperId()))
-            && (this.getOperName() == null ? other.getOperName() == null : this.getOperName().equals(other.getOperName()))
             && (this.getVersion() == null ? other.getVersion() == null : this.getVersion().equals(other.getVersion()));
     }
 
@@ -243,17 +182,14 @@ B2B代付：B2BDF
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getChannelId() == null) ? 0 : getChannelId().hashCode());
-        result = prime * result + ((getChannelCode() == null) ? 0 : getChannelCode().hashCode());
-        result = prime * result + ((getProdCode() == null) ? 0 : getProdCode().hashCode());
-        result = prime * result + ((getChannelName() == null) ? 0 : getChannelName().hashCode());
+        result = prime * result + ((getMchId() == null) ? 0 : getMchId().hashCode());
+        result = prime * result + ((getMchCode() == null) ? 0 : getMchCode().hashCode());
+        result = prime * result + ((getMchName() == null) ? 0 : getMchName().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
         result = prime * result + ((getValid() == null) ? 0 : getValid().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
-        result = prime * result + ((getOperId() == null) ? 0 : getOperId().hashCode());
-        result = prime * result + ((getOperName() == null) ? 0 : getOperName().hashCode());
         result = prime * result + ((getVersion() == null) ? 0 : getVersion().hashCode());
         return result;
     }

@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.repository.po;
+package com.hbfintech.pay.trade.repository.entity;
 
 import java.io.Serializable;
 

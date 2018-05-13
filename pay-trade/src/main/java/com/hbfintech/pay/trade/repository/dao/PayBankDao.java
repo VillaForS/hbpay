@@ -1,6 +1,6 @@
 package com.hbfintech.pay.trade.repository.dao;
 
-import com.hbfintech.pay.trade.repository.po.PayBank;
+import com.hbfintech.pay.trade.repository.entity.PayBank;
 
 public interface PayBankDao {
     int deleteByPrimaryKey(Long bankId);

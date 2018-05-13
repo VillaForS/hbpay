@@ -1,6 +1,6 @@
 package com.hbfintech.pay.trade.kernal.checker;
 
-import com.hbfintech.pay.common.dto.RequestDto;
+import com.hbfintech.pay.intf.dto.RequestDto;
 
 public interface RequestChecker
 {

@@ -1,24 +1,15 @@
-package com.hbfintech.redis.sequence;
-
-import org.apache.commons.collections.MapUtils;
-import org.apache.commons.lang3.StringUtils;
+package com.hbfintech.pay.trade.dict;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-/**
- * INFO: 同步ORACLE的sys_seq表记录
- * User: zhaokai
- * Date: 2016/11/3
- * Version: 1.0
- * History: <p>如果有修改过程，请记录</P>
- */
+import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang3.StringUtils;
+
 
 public enum SeqEnum {
-    HY_MEMBERREGISTER("HY_MEMBERREGISTER", "YHXXZC", "用户信息注册表编号"),
-    JK_APPLY("JK_APPLY", "JKSQ", "借款申请表编号"),
-    NOT_FUOUND("", "HBFINTECH", "无匹配");
-
+    PAY_CONTRSCT_WITHHOLD_SIGN("pay_contract_withhold_sign", "CWHSGN", "用户信息注册表编号"),
+	DEFAULT("default","PAY","默认");
 
     /**
      * @param code   code
@@ -61,6 +52,6 @@ public enum SeqEnum {
         if (null != e) {
             return e;
         }
-        return SeqEnum.NOT_FUOUND;
+        return SeqEnum.DEFAULT;
     }
 }

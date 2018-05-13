@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import com.hbfintech.pay.common.enumm.RespCodeEnum;
+import com.hbfintech.pay.intf.enumm.RespCodeEnum;
 import com.hbfintech.pay.trade.domain.bank.BankBo;
 import com.hbfintech.pay.trade.kernal.checker.CheckContext;
 import com.hbfintech.pay.trade.kernal.checker.CheckResult;

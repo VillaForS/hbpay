@@ -1,6 +1,6 @@
 package com.hbfintech.pay.common.exception;
 
-import com.hbfintech.pay.common.enumm.RespCodeEnum;
+import com.hbfintech.pay.intf.enumm.RespCodeEnum;
 
 public abstract class BizException extends RuntimeException
 {

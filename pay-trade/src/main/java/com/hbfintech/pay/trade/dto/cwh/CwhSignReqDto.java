@@ -1,17 +1,17 @@
-package com.hbfintech.pay.trade.dto.cdk;
+package com.hbfintech.pay.trade.dto.cwh;
 
 import java.util.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.hbfintech.pay.common.dto.RequestDto;
+import com.hbfintech.pay.intf.dto.RequestDto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class CdkSignReqDto extends RequestDto
+public class CwhSignReqDto extends RequestDto
 {
     /**
      * serialVersionUID:(用一句话描述这个变量表示什么).
@@ -29,6 +29,9 @@ public class CdkSignReqDto extends RequestDto
     //签约卡号
     @NotEmpty
     private String cardNo;
+    //银行编码
+    @NotEmpty
+    private String bankCode;
     //卡类型
     private String cardType;
     //银行预留手机号
@@ -42,4 +45,6 @@ public class CdkSignReqDto extends RequestDto
     private String certNo;
     //证件类型
     private Byte certType;
+    //渠道编号
+    private String channelCode;
 }

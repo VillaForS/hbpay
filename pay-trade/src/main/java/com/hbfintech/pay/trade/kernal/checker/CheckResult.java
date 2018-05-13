@@ -1,6 +1,7 @@
 package com.hbfintech.pay.trade.kernal.checker;
 
-import com.hbfintech.pay.common.enumm.RespCodeEnum;
+
+import com.hbfintech.pay.intf.enumm.RespCodeEnum;
 
 import lombok.Data;
 
@@ -9,11 +10,11 @@ public class CheckResult
 {
       private Boolean passCheck;
       
-      private RespCodeEnum respCode;
+      private RespCodeEnum respEnum;
       
       public CheckResult(Boolean passCheck, RespCodeEnum respCode) {
           this.passCheck = passCheck;
-          this.respCode = respCode;
+          this.respEnum = respCode;
       }
       
       public Boolean isPass(){

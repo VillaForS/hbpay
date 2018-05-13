@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.google.common.collect.Maps;
 import com.hbfintech.pay.trade.dict.PayConstants;
 import com.hbfintech.pay.trade.domain.bank.cache.ProdBankCacheWorker;
-import com.hbfintech.pay.trade.repository.po.PayBankProduct;
+import com.hbfintech.pay.trade.repository.entity.PayBankProduct;
 
 @Service
 public class BankBo 

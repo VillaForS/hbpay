@@ -1,8 +1,8 @@
 package com.hbfintech.pay.trade.repository.dao;
 
-import com.hbfintech.pay.trade.repository.po.PayContractWithholdSign;
+import com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign;
 
-public interface payContractWithholdSign {
+public interface PayContractWithholdSignDao {
     int deleteByPrimaryKey(Long withholdSignId);
 
     int insert(PayContractWithholdSign record);
@@ -14,4 +14,6 @@ public interface payContractWithholdSign {
     int updateByPrimaryKeySelective(PayContractWithholdSign record);
 
     int updateByPrimaryKey(PayContractWithholdSign record);
+    
+    int waitConfirm(Long withholdSignId);
 }

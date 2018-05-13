@@ -8,8 +8,8 @@ import com.google.common.collect.Maps;
 import com.hbfintech.pay.trade.dict.PayConstants;
 import com.hbfintech.pay.trade.domain.merchant.cache.MchCacheWorker;
 import com.hbfintech.pay.trade.domain.merchant.cache.MchProdCacheWorker;
-import com.hbfintech.pay.trade.repository.po.PayMerchant;
-import com.hbfintech.pay.trade.repository.po.PayMerchantProduct;
+import com.hbfintech.pay.trade.repository.entity.PayMerchant;
+import com.hbfintech.pay.trade.repository.entity.PayMerchantProduct;
 
 public class MerchantBo
 {

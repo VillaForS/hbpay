@@ -1,10 +1,10 @@
-package com.hbfintech.pay.trade.repository.po;
+package com.hbfintech.pay.trade.repository.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class PayMerchant implements Serializable {
-    private Long mchId;
+public class PayMerchantProduct implements Serializable {
+    private Long mchProdId;
 
     /**
      * 商户编码
@@ -14,14 +14,21 @@ public class PayMerchant implements Serializable {
     private String mchCode;
 
     /**
-     * 商户名称
+     * 产品编号
      *
      * @mbg.generated
      */
-    private String mchName;
+    private String prodCode;
 
     /**
-     * 商户状态：0：未开通 1：已开通
+     * 异步通知地址
+     *
+     * @mbg.generated
+     */
+    private String notifyurl;
+
+    /**
+     * 开通状态：0：关闭 1：开通
      *
      * @mbg.generated
      */
@@ -64,12 +71,12 @@ public class PayMerchant implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getMchId() {
-        return mchId;
+    public Long getMchProdId() {
+        return mchProdId;
     }
 
-    public void setMchId(Long mchId) {
-        this.mchId = mchId;
+    public void setMchProdId(Long mchProdId) {
+        this.mchProdId = mchProdId;
     }
 
     public String getMchCode() {
@@ -80,12 +87,20 @@ public class PayMerchant implements Serializable {
         this.mchCode = mchCode == null ? null : mchCode.trim();
     }
 
-    public String getMchName() {
-        return mchName;
+    public String getProdCode() {
+        return prodCode;
     }
 
-    public void setMchName(String mchName) {
-        this.mchName = mchName == null ? null : mchName.trim();
+    public void setProdCode(String prodCode) {
+        this.prodCode = prodCode == null ? null : prodCode.trim();
+    }
+
+    public String getNotifyurl() {
+        return notifyurl;
+    }
+
+    public void setNotifyurl(String notifyurl) {
+        this.notifyurl = notifyurl == null ? null : notifyurl.trim();
     }
 
     public Byte getStatus() {
@@ -142,9 +157,10 @@ public class PayMerchant implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", mchId=").append(mchId);
+        sb.append(", mchProdId=").append(mchProdId);
         sb.append(", mchCode=").append(mchCode);
-        sb.append(", mchName=").append(mchName);
+        sb.append(", prodCode=").append(prodCode);
+        sb.append(", notifyurl=").append(notifyurl);
         sb.append(", status=").append(status);
         sb.append(", remark=").append(remark);
         sb.append(", valid=").append(valid);
@@ -166,10 +182,11 @@ public class PayMerchant implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        PayMerchant other = (PayMerchant) that;
-        return (this.getMchId() == null ? other.getMchId() == null : this.getMchId().equals(other.getMchId()))
+        PayMerchantProduct other = (PayMerchantProduct) that;
+        return (this.getMchProdId() == null ? other.getMchProdId() == null : this.getMchProdId().equals(other.getMchProdId()))
             && (this.getMchCode() == null ? other.getMchCode() == null : this.getMchCode().equals(other.getMchCode()))
-            && (this.getMchName() == null ? other.getMchName() == null : this.getMchName().equals(other.getMchName()))
+            && (this.getProdCode() == null ? other.getProdCode() == null : this.getProdCode().equals(other.getProdCode()))
+            && (this.getNotifyurl() == null ? other.getNotifyurl() == null : this.getNotifyurl().equals(other.getNotifyurl()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
             && (this.getValid() == null ? other.getValid() == null : this.getValid().equals(other.getValid()))
@@ -182,9 +199,10 @@ public class PayMerchant implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getMchId() == null) ? 0 : getMchId().hashCode());
+        result = prime * result + ((getMchProdId() == null) ? 0 : getMchProdId().hashCode());
         result = prime * result + ((getMchCode() == null) ? 0 : getMchCode().hashCode());
-        result = prime * result + ((getMchName() == null) ? 0 : getMchName().hashCode());
+        result = prime * result + ((getProdCode() == null) ? 0 : getProdCode().hashCode());
+        result = prime * result + ((getNotifyurl() == null) ? 0 : getNotifyurl().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
         result = prime * result + ((getValid() == null) ? 0 : getValid().hashCode());

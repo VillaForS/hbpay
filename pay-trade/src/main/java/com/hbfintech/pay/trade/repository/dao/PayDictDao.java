@@ -1,6 +1,6 @@
 package com.hbfintech.pay.trade.repository.dao;
 
-import com.hbfintech.pay.trade.repository.po.PayDict;
+import com.hbfintech.pay.trade.repository.entity.PayDict;
 
 public interface PayDictDao {
     int deleteByPrimaryKey(Long dictId);

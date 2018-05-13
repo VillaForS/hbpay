@@ -12,6 +12,7 @@
     <!-- hbFintech jar -->
     <pay-common.version>0.0.1-SNAPSHOT</pay-common.version>
     <redis-util.version>0.0.1-SNAPSHOT</redis-util.version>
+    <pay-interface.version>0.0.1-SNAPSHOT</pay-interface.version>
     
     <!-- spring jar  -->
     <spring-boot-dependencies.version>1.5.12.RELEASE</spring-boot-dependencies.version>
@@ -122,7 +123,11 @@
 			<artifactId>log4j-to-slf4j</artifactId>
 			<version>${log4j-to-slf4j.version}</version>
 		</dependency>
-</dependencies>
+		        <dependency>
+            <groupId>com.hbfintech</groupId>
+            <artifactId>pay-interface</artifactId>
+            <version>${pay-interface.version}</version>
+        </dependency>
 		<dependency>  
 		    <groupId>org.springframework.boot</groupId>  
 		    <artifactId>spring-boot-starter</artifactId>  
@@ -134,6 +139,7 @@
 		        </exclusion>  
 		    </exclusions>  
 		</dependency>  
+		</dependencies>
   </dependencyManagement>
 
   <!-- 默认child 工程都依赖的类，只能是所有工程的最小化依赖，child工程特定的依赖在child工程pom里添加-->
@@ -168,7 +174,6 @@
 			    <groupId>commons-codec</groupId>
 			    <artifactId>commons-codec</artifactId>
             </dependency>
-			
   </dependencies>
   <build>
    <plugins>

@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.repository.po;
+package com.hbfintech.pay.trade.repository.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,10 +9,12 @@ public class PayProduct implements Serializable {
     /**
      * 产品编号
 实名认证：AUTH
-快捷支付：KJ
-代扣：DK
-协议代扣：CDK
-代付： DF
+快捷支付：QP
+代扣：WH
+协议代扣：CWH
+代付： POUT
+对私代付： TCDF
+对公代付：TBDF
 微信支付：WECHAT
 支付宝支付-JS：ALIPAY
 B2B网银充值：B2BWEB

@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.repository.po;
+package com.hbfintech.pay.trade.repository.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -40,6 +40,8 @@ public class PayContractWithholdSign implements Serializable {
      * @mbg.generated
      */
     private String cardNo;
+
+    private String bankCode;
 
     /**
      * 卡类型
@@ -142,7 +144,7 @@ C：贷记卡
     private Date channelSuccTime;
 
     /**
-     * 支付状态,0-订单生成,1-待确认,2-签约成功,3-签约失败
+     * 支付状态,0-订单创建,10-待用户确认,20-签约处理中,30-签约成功，40 签约失败
      *
      * @mbg.generated
      */
@@ -245,6 +247,14 @@ C：贷记卡
 
     public void setCardNo(String cardNo) {
         this.cardNo = cardNo == null ? null : cardNo.trim();
+    }
+
+    public String getBankCode() {
+        return bankCode;
+    }
+
+    public void setBankCode(String bankCode) {
+        this.bankCode = bankCode == null ? null : bankCode.trim();
     }
 
     public String getCardType() {
@@ -435,6 +445,7 @@ C：贷记卡
         sb.append(", mchReqNo=").append(mchReqNo);
         sb.append(", mchReqTime=").append(mchReqTime);
         sb.append(", cardNo=").append(cardNo);
+        sb.append(", bankCode=").append(bankCode);
         sb.append(", cardType=").append(cardType);
         sb.append(", mobile=").append(mobile);
         sb.append(", certName=").append(certName);
@@ -479,6 +490,7 @@ C：贷记卡
             && (this.getMchReqNo() == null ? other.getMchReqNo() == null : this.getMchReqNo().equals(other.getMchReqNo()))
             && (this.getMchReqTime() == null ? other.getMchReqTime() == null : this.getMchReqTime().equals(other.getMchReqTime()))
             && (this.getCardNo() == null ? other.getCardNo() == null : this.getCardNo().equals(other.getCardNo()))
+            && (this.getBankCode() == null ? other.getBankCode() == null : this.getBankCode().equals(other.getBankCode()))
             && (this.getCardType() == null ? other.getCardType() == null : this.getCardType().equals(other.getCardType()))
             && (this.getMobile() == null ? other.getMobile() == null : this.getMobile().equals(other.getMobile()))
             && (this.getCertName() == null ? other.getCertName() == null : this.getCertName().equals(other.getCertName()))
@@ -513,6 +525,7 @@ C：贷记卡
         result = prime * result + ((getMchReqNo() == null) ? 0 : getMchReqNo().hashCode());
         result = prime * result + ((getMchReqTime() == null) ? 0 : getMchReqTime().hashCode());
         result = prime * result + ((getCardNo() == null) ? 0 : getCardNo().hashCode());
+        result = prime * result + ((getBankCode() == null) ? 0 : getBankCode().hashCode());
         result = prime * result + ((getCardType() == null) ? 0 : getCardType().hashCode());
         result = prime * result + ((getMobile() == null) ? 0 : getMobile().hashCode());
         result = prime * result + ((getCertName() == null) ? 0 : getCertName().hashCode());

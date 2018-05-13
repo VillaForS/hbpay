@@ -2,7 +2,7 @@ package com.hbfintech.pay.trade.repository.dao;
 
 import java.util.List;
 
-import com.hbfintech.pay.trade.repository.po.PayChannelBank;
+import com.hbfintech.pay.trade.repository.entity.PayChannelBank;
 
 public interface PayChannelBankDao {
     int deleteByPrimaryKey(Long channelBankId);

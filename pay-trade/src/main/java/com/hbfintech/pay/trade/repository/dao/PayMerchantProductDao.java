@@ -1,6 +1,6 @@
 package com.hbfintech.pay.trade.repository.dao;
 
-import com.hbfintech.pay.trade.repository.po.PayMerchantProduct;
+import com.hbfintech.pay.trade.repository.entity.PayMerchantProduct;
 
 public interface PayMerchantProductDao {
     int deleteByPrimaryKey(Long mchProdId);

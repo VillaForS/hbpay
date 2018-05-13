@@ -2,14 +2,11 @@ package com.hbfintech.redis.sequence.utils;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import com.hbfintech.redis.sequence.SeqEnum;
 import com.hbfintech.redis.utils.RedisCacheUtil;
-
-import org.apache.commons.lang3.StringUtils;
 
 public class SequenceNoService {
 
@@ -28,11 +25,10 @@ public class SequenceNoService {
      * @Description: 生成全局唯一的序号（顺序）
      * @return: String
      */
-    public String getSequenceNo(String tableName) {
-        SeqEnum seqEnum = SeqEnum.getEnum(tableName);
+    public String getSequenceNo(String tableName,String prefix) {
         StringBuffer idStr = new StringBuffer(50);
-        if (StringUtils.isNotBlank(seqEnum.getPrefix())) {
-            idStr.append(seqEnum.getPrefix());
+        if (StringUtils.isNotBlank(prefix)) {
+            idStr.append(prefix);
         }
 
         // 当前map存储的值累加1

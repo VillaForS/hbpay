@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.hbfintech.pay.trade.dict.PayConstants;
 import com.hbfintech.pay.trade.domain.channel.cache.ChannelWorker;
 import com.hbfintech.pay.trade.domain.channel.cache.ProdOpenChannelsWorker;
-import com.hbfintech.pay.trade.repository.po.PayChannel;
+import com.hbfintech.pay.trade.repository.entity.PayChannel;
 
 @Service
 public class PayChannelBo 
