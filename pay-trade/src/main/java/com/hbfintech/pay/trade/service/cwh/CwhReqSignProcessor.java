@@ -8,15 +8,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.hbfintech.pay.common.util.BeanConvertUtils;
-import com.hbfintech.pay.intf.dto.ResponseDto;
+import com.hbfintech.pay.intf.dto.adapter.AdptCwhSignReqDto;
+import com.hbfintech.pay.intf.dto.adapter.AdptCwhSignRespDto;
+import com.hbfintech.pay.intf.dto.trade.cwh.CwhSignReqDto;
+import com.hbfintech.pay.intf.dto.trade.cwh.CwhSignRespDto;
 import com.hbfintech.pay.intf.enumm.RespCodeEnum;
 import com.hbfintech.pay.trade.dict.PayConstants;
 import com.hbfintech.pay.trade.dict.SeqEnum;
 import com.hbfintech.pay.trade.dict.SignStatusEnum;
-import com.hbfintech.pay.trade.dto.cwh.CwhSignReqDto;
-import com.hbfintech.pay.trade.dto.cwh.CwhSignRespDto;
+import com.hbfintech.pay.trade.kernal.checker.CheckContext;
 import com.hbfintech.pay.trade.kernal.checker.CheckResult;
-import com.hbfintech.pay.trade.kernal.checker.RequestChecker;
+import com.hbfintech.pay.trade.kernal.checker.Checker;
 import com.hbfintech.pay.trade.repository.dao.PayContractWithholdSignDao;
 import com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign;
 import com.hbfintech.redis.sequence.utils.SequenceNoService;
@@ -26,7 +28,7 @@ public class CwhReqSignProcessor {
 
 	@Autowired
 	@Qualifier("comnReqCheckerChain")
-	RequestChecker requestChecker;
+	Checker requestChecker;
     @Autowired
 	SequenceNoService sequenceNoService;
     @Autowired
@@ -37,6 +39,7 @@ public class CwhReqSignProcessor {
     String signUrl;
     
 	public PayContractWithholdSign preProcess(CwhSignReqDto cdkSignReqDto) {
+		
 		PayContractWithholdSign payContractWithholdSign = new PayContractWithholdSign();
 		
 		if(StringUtils.isEmpty(cdkSignReqDto.getCardType())){
@@ -45,7 +48,10 @@ public class CwhReqSignProcessor {
 		if(null==cdkSignReqDto.getCertType()){
 			cdkSignReqDto.setCertType(PayConstants.CERT_TYPE_ID);
 		}
-		CheckResult checkResult = requestChecker.checkRequest(cdkSignReqDto);
+		
+		CheckContext checkContext = new CheckContext();
+		checkContext.putAll(BeanConvertUtils.bean2Map(cdkSignReqDto));
+		CheckResult checkResult = requestChecker.check(checkContext);
 		if(!checkResult.isPass()){
 			payContractWithholdSign.setRespCode(checkResult.getRespEnum().getCode());
 			payContractWithholdSign.setRespMsg(checkResult.getRespEnum().getMessage());
@@ -58,17 +64,22 @@ public class CwhReqSignProcessor {
 		return payContractWithholdSign;
 	}
 
-	public PayContractWithholdSign process(PayContractWithholdSign payContractWithholdSign) {
-		 = restTemplate.postForObject(signUrl, payContractWithholdSign, PayContractWithholdSign.class);
+	public PayContractWithholdSign process(CwhSignReqDto cdkSignReqDto,PayContractWithholdSign payContractWithholdSign) {
+		AdptCwhSignReqDto reqDto = new AdptCwhSignReqDto();
+		BeanConvertUtils.copyProperties(cdkSignReqDto, reqDto);
+		AdptCwhSignRespDto respDto = restTemplate.postForObject(signUrl, payContractWithholdSign, AdptCwhSignRespDto.class);
 		if(RespCodeEnum.SUCCESS.equals(respDto.getCode())){
 			payContractWithholdSignDao.waitConfirm(payContractWithholdSign.getWithholdSignId());
+		}else{
+			payContractWithholdSign.setRespCode(respDto.getRespCode());
+			payContractWithholdSign.setRespMsg(respDto.getRespMsg());
+			payContractWithholdSign.setChannelRespCode(respDto.getChannelRespCode());
+			payContractWithholdSign.setChannelRespMsg(respDto.getChannelRespMsg());
+			payContractWithholdSignDao.fail(payContractWithholdSign);
 		}
+		return payContractWithholdSign;
 	}
 
-	public CwhSignRespDto postProcess(CwhSignReqDto cdkSignReqDto, ResponseDto respDto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 	

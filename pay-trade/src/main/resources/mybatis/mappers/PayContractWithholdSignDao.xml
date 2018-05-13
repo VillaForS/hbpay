@@ -380,9 +380,9 @@
                   update_time = now()
             where withhold_sign_id = #{withholdSignId,jdbcType=BIGINT}
     </update>
-    <update id="updateSignStatus" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+    <update id="fail" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
             update pay_contract_withhold_sign
-             set status = #{status,jdbcType=TINYINT},
+             set status = 40,
                   resp_code = #{respCode,jdbcType=VARCHAR},
                   resp_msg = #{respMsg,jdbcType=VARCHAR},
                   <if test="channelRespCode != null">

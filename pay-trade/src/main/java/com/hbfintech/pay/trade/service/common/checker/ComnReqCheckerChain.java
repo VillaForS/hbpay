@@ -6,24 +6,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.hbfintech.pay.common.util.BeanConvertUtils;
-import com.hbfintech.pay.intf.dto.RequestDto;
 import com.hbfintech.pay.trade.kernal.checker.CheckContext;
 import com.hbfintech.pay.trade.kernal.checker.CheckResult;
 import com.hbfintech.pay.trade.kernal.checker.Checker;
-import com.hbfintech.pay.trade.kernal.checker.RequestChecker;
 
 @Component("comnReqCheckerChain")
-public class ComnReqCheckerChain implements RequestChecker{
+public class ComnReqCheckerChain implements Checker{
 
 	@Autowired
 	List<ComnChecker> checkerChain;
 
 	@Override
-	public CheckResult checkRequest(RequestDto requestDto) {
-		CheckContext checkContext = new CheckContext();
-		checkContext.putAll(BeanConvertUtils.bean2Map(requestDto));
-		
+	public CheckResult check(CheckContext checkContext) {
 		Iterator<ComnChecker> it =checkerChain.iterator() ;
 		while(it.hasNext() ){
 			Checker checker = it.next();
@@ -35,6 +29,11 @@ public class ComnReqCheckerChain implements RequestChecker{
 			}
 		}
 		return new CheckResult(true,null);
+	}
+
+	@Override
+	public Boolean support(CheckContext checkContext) {
+		return true;
 	}
 	
 	

@@ -16,4 +16,6 @@ public interface PayContractWithholdSignDao {
     int updateByPrimaryKey(PayContractWithholdSign record);
     
     int waitConfirm(Long withholdSignId);
+    
+    int fail(PayContractWithholdSign record);
 }
