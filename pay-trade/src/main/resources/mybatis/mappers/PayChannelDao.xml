@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hbfintech.pay.trade.repository.dao.PayChannelDao">
-  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.po.PayChannel">
+  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.entity.PayChannel">
     <id column="channel_id" jdbcType="BIGINT" property="channelId" />
     <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
     <result column="prod_code" jdbcType="VARCHAR" property="prodCode" />
     <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
     <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="valid" jdbcType="BIT" property="valid" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -16,8 +17,8 @@
     <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-    channel_id, channel_code, prod_code, channel_name, status, remark, valid, create_time, 
-    update_time, oper_id, oper_name, version
+    channel_id, channel_code, prod_code, channel_name, status, weight, remark, valid, 
+    create_time, update_time, oper_id, oper_name, version
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -29,28 +30,27 @@
     delete from pay_channel
     where channel_id = #{channelId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.po.PayChannel">
-   <selectKey keyProperty="channelId" order="AFTER" resultType="java.lang.Long">
+  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannel">
+    <selectKey keyProperty="channelId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pay_channel (channel_code, prod_code, 
-      channel_name, status, remark, 
+    insert into pay_channel (channel_code, prod_code, channel_name, 
+      status, weight, remark, 
       valid, create_time, update_time, 
       oper_id, oper_name, version
       )
-    values ( #{channelCode,jdbcType=VARCHAR}, #{prodCode,jdbcType=VARCHAR}, 
-      #{channelName,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, 
+    values (#{channelCode,jdbcType=VARCHAR}, #{prodCode,jdbcType=VARCHAR}, #{channelName,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{weight,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
       #{valid,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{operId,jdbcType=BIGINT}, #{operName,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.po.PayChannel">
-     <selectKey keyProperty="channelId" order="AFTER" resultType="java.lang.Long">
+  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannel">
+    <selectKey keyProperty="channelId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pay_channel
     <trim prefix="(" suffix=")" suffixOverrides=",">
-     
       <if test="channelCode != null">
         channel_code,
       </if>
@@ -62,6 +62,9 @@
       </if>
       <if test="status != null">
         status,
+      </if>
+      <if test="weight != null">
+        weight,
       </if>
       <if test="remark != null">
         remark,
@@ -86,9 +89,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="channelId != null">
-        #{channelId,jdbcType=BIGINT},
-      </if>
       <if test="channelCode != null">
         #{channelCode,jdbcType=VARCHAR},
       </if>
@@ -100,6 +100,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=TINYINT},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
@@ -124,7 +127,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.po.PayChannel">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannel">
     update pay_channel
     <set>
       <if test="channelCode != null">
@@ -138,6 +141,9 @@
       </if>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
@@ -163,12 +169,13 @@
     </set>
     where channel_id = #{channelId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.po.PayChannel">
+  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannel">
     update pay_channel
     set channel_code = #{channelCode,jdbcType=VARCHAR},
       prod_code = #{prodCode,jdbcType=VARCHAR},
       channel_name = #{channelName,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
+      weight = #{weight,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR},
       valid = #{valid,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -178,8 +185,7 @@
       version = #{version,jdbcType=INTEGER}
     where channel_id = #{channelId,jdbcType=BIGINT}
   </update>
-  
-      <select id="getChannelByCode" resultMap="BaseResultMap">
+     <select id="getChannelByCode" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from pay_channel

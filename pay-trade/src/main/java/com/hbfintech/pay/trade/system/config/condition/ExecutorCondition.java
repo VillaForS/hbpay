@@ -6,17 +6,15 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.util.StringUtils;
 
-import com.hbfintech.pay.common.log.SystemLogger;
+import com.hbfintech.logger.CustomLogger;
+import com.hbfintech.logger.LoggerFactory;
+import com.hbfintech.pay.trade.PayTradeApplication;
 
-/**
- * <一句话功能简述>
- * <功能详细描述>
- *
- * @author kaylves
- * @since 1.0
- */
+
 public class ExecutorCondition implements Condition
 {
+    protected static CustomLogger logger = LoggerFactory.getCustomLogger(PayTradeApplication.class);
+    
     private static final String TASK_CUSTOM_EXECUTOR = "task.custom.executor";
 
     
@@ -24,11 +22,6 @@ public class ExecutorCondition implements Condition
     public boolean matches(ConditionContext context,AnnotatedTypeMetadata metadata)
     {
         String executor = context.getEnvironment().getProperty(TASK_CUSTOM_EXECUTOR);
-        if(StringUtils.isEmpty(executor))
-        {
-        	SystemLogger.info("------------AsynExecutor not loaded ,No task.custom.executor properties found");
-        }
-        
         return !StringUtils.isEmpty(executor);
     }
 

@@ -385,7 +385,7 @@
       oper_time = #{operTime,jdbcType=TIMESTAMP}
     where withhold_txn_id = #{withholdTxnId,jdbcType=BIGINT}
   </update>
-  <update id="processing" >
+  <update id="processing">
           update pay_contract_withhold_txn
           set status =20
           update_time = now()

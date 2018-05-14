@@ -146,7 +146,7 @@ public class PayContractWithholdTxn implements Serializable {
     private Date notifyLastTime;
 
     /**
-     * 支付状态,0-已创建,1-支付中,2-支付成功,3-支付失败
+     * 支付状态,0-已创建,20-支付中,30-支付成功,40-支付失败
      *
      * @mbg.generated
      */

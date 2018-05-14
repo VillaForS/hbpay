@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.hbfintech.pay.common.log.SystemLogger;
 import com.hbfintech.redis.concurrent.lock.templateLock.TemplateLock;
 import com.hbfintech.redis.concurrent.lock.templateLock.TemplateLockImpl;
 import com.hbfintech.redis.utils.RedisCacheUtil;
@@ -46,7 +45,6 @@ public class RedisConfig {
         jedisPoolConfig.setMaxTotal(maxActive);
 
         JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port,Protocol.DEFAULT_TIMEOUT,null,database);
-        SystemLogger.info("-------------JedisPool注入成功！！---------------");
         return jedisPool;
 	}
     

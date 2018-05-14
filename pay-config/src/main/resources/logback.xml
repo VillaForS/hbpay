@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 	<contextName>risk</contextName>
-	<property name="CUSTOM_LOG_HOME" 		value="/var/appLogs/javaApp/pay-config"" />
+	<property name="CUSTOM_LOG_HOME" 		value="/var/appLogs/javaApp/pay-config" />
 	<property name="LOG_HOME"		 		value="/tmp/logs/root" />
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -152,33 +152,33 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger name="com.hbfintech.logger.debug" level="DEBUG" additivity="false">
+	<logger name="com.hbfintech.logger.debug" level="INFO" additivity="false">
 		<appender-ref ref="com.hbfintech.logger.debug" />
 	</logger>
 
-	<logger name="com.hbfintech.logger.warn" level="DEBUG" additivity="false">
+	<logger name="com.hbfintech.logger.warn" level="INFO" additivity="false">
 		<appender-ref ref="com.hbfintech.logger.warn" />
 	</logger>
 	
-	<logger name="com.hbfintech.logger.error" level="DEBUG" additivity="false">
+	<logger name="com.hbfintech.logger.error" level="INFO" additivity="false">
 		<appender-ref ref="com.hbfintech.logger.error" />
 	</logger>
 
-	<logger name="com.hbfintech.logger.access" level="DEBUG" additivity="false">
+	<logger name="com.hbfintech.logger.access" level="INFO" additivity="false">
 		<appender-ref ref="com.hbfintech.logger.access" />
 	</logger>
 	
-	<logger name="com.hbfintech.logger.system" level="DEBUG" additivity="false">
+	<logger name="com.hbfintech.logger.system" level="INFO" additivity="false">
 		<appender-ref ref="com.hbfintech.logger.system" />
 	</logger>
-	<logger name="com.hbfintech.logger.extra" level="DEBUG" additivity="false">
+	<logger name="com.hbfintech.logger.extra" level="INFO" additivity="false">
 		<appender-ref ref="com.hbfintech.logger.extra" />
 	</logger>
-	<logger name="com.hbfintech.logger.pfme" level="DEBUG" additivity="false">
+	<logger name="com.hbfintech.logger.pfme" level="INFO" additivity="false">
 		<appender-ref ref="com.hbfintech.logger.pfme" />
 	</logger>
 
-	<root level="DEBUG">
-		<appender-ref ref="STDOUT" />
+	<root level="ERROR">
+		<appender-ref re  f="STDOUT" />
 	</root>
 </configuration>
