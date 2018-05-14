@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.domain.channel.cache;
+package com.hbfintech.pay.trade.domain.bank.cache;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import com.hbfintech.redis.utils.RedisCacheUtil;
 import com.hbfintech.redis.utils.SyncCacheWorker;
 
 @Component
-public class ChannelOpenBankWorker extends SyncCacheWorker<List<PayChannelBank>,String>{
+public class BankOpenChannelsWorker extends SyncCacheWorker<List<PayChannelBank>,String>{
     
     @Autowired
     RedisCacheUtil  redisCacheUtil;
@@ -21,15 +21,15 @@ public class ChannelOpenBankWorker extends SyncCacheWorker<List<PayChannelBank>,
     @Autowired
     PayChannelBankDao payChannelBankDao; 
     
-    protected List<PayChannelBank> read(String channelCode) {
-         String banks=  redisCacheUtil.hgetBin(PayCacheKeys.CHANNEL_BANK_OPEN, channelCode, String.class);
+    protected List<PayChannelBank> read(String bankCode) {
+         String banks=  redisCacheUtil.hgetBin(PayCacheKeys.CHANNEL_BANK_OPEN, bankCode, String.class);
          return  JSON.parseArray(banks, PayChannelBank.class);
     }
     
-    protected List<PayChannelBank> write(String channelCode) { 
+    protected List<PayChannelBank> write(String bankCode) { 
         
-         List<PayChannelBank> banks = payChannelBankDao.getChannelOpenBanks(channelCode);
-         redisCacheUtil.hsetBin(PayCacheKeys.CHANNEL_BANK_OPEN, channelCode, banks);
+         List<PayChannelBank> banks = payChannelBankDao.getChannelOpenBanks(bankCode);
+         redisCacheUtil.hsetBin(PayCacheKeys.CHANNEL_BANK_OPEN, bankCode, banks);
          return banks;
     }
 

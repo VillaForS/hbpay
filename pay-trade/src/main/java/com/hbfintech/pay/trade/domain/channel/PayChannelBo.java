@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hbfintech.pay.trade.dict.PayConstants;
+import com.hbfintech.pay.trade.domain.bank.cache.BankOpenChannelsWorker;
 import com.hbfintech.pay.trade.domain.channel.cache.ChannelWorker;
-import com.hbfintech.pay.trade.domain.channel.cache.ProdOpenChannelsWorker;
+import com.hbfintech.pay.trade.domain.prod.cache.ProdOpenChannelsWorker;
 import com.hbfintech.pay.trade.repository.entity.PayChannel;
+import com.hbfintech.pay.trade.repository.entity.PayChannelBank;
 
 @Service
 public class PayChannelBo 
@@ -17,21 +19,14 @@ public class PayChannelBo
     @Autowired
     ChannelWorker payChannelCacheWorker ;
     
-    @Autowired
-    ProdOpenChannelsWorker payProdChannelCacheWorker;
     
-    public Boolean isChannelOpen(String bankCode)
+    public Boolean isChannelOpen(String channelCode)
     {
-        PayChannel channel = payChannelCacheWorker.find(bankCode);
+        PayChannel channel = payChannelCacheWorker.find(channelCode);
         if(null!=channel&&PayConstants.OPEN ==channel.getStatus()) {
             return true;
         }
         return false;
     }
     
-    public List<PayChannel> getChannelsByProdCode(String prodCode){
-        List<PayChannel> list = payProdChannelCacheWorker.find(prodCode);
-        return list;
-    }
-
 }

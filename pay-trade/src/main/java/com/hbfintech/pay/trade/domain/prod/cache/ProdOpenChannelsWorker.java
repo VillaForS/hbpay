@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.domain.channel.cache;
+package com.hbfintech.pay.trade.domain.prod.cache;
 
 import java.util.List;
 

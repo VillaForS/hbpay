@@ -1,14 +1,10 @@
-package com.hbfintech.pay.trade.service.common.checker;
+package com.hbfintech.pay.trade.checker;
 
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.hbfintech.pay.trade.kernal.checker.CheckContext;
-import com.hbfintech.pay.trade.kernal.checker.CheckResult;
-import com.hbfintech.pay.trade.kernal.checker.Checker;
 
 @Component("comnReqCheckerChain")
 public class ComnReqCheckerChain implements Checker{

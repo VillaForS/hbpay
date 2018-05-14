@@ -9,9 +9,9 @@ import com.hbfintech.pay.common.util.BeanConvertUtils;
 import com.hbfintech.pay.intf.dto.adapter.AdptCwhSignRespDto;
 import com.hbfintech.pay.intf.dto.trade.cwh.CwhTxnReqDto;
 import com.hbfintech.pay.intf.dto.trade.cwh.CwhTxnRespDto;
-import com.hbfintech.pay.trade.kernal.checker.CheckContext;
-import com.hbfintech.pay.trade.kernal.checker.CheckResult;
-import com.hbfintech.pay.trade.kernal.checker.Checker;
+import com.hbfintech.pay.trade.checker.CheckContext;
+import com.hbfintech.pay.trade.checker.CheckResult;
+import com.hbfintech.pay.trade.checker.Checker;
 import com.hbfintech.pay.trade.repository.entity.PayContractWithholdTxn;
 import com.hbfintech.pay.trade.service.cwh.CwhTxnService;
 

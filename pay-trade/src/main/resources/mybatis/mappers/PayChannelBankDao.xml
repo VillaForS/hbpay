@@ -226,6 +226,6 @@
     select 
     <include refid="Base_Column_List" />
     from pay_channel_bank
-    where channel_code = #{channelCode,jdbcType=VARCHAR} and status =1 and valid = 0 
+    where bank_code = #{bankCode,jdbcType=VARCHAR} and status =1 and valid = 0 
   </select>
 </mapper>

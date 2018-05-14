@@ -1,4 +1,4 @@
-package com.hbfintech.pay.trade.domain.bank.cache;
+package com.hbfintech.pay.trade.domain.prod.cache;
 
 import java.util.Map;
 
