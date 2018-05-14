@@ -1,9 +1,12 @@
-package com.hbfintech.eureka;
+package com.hbfintech.pay.config;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.config.server.EnableConfigServer;
+
+import com.hbfintech.logger.CustomLogger;
+import com.hbfintech.logger.LoggerFactory;
 
 /**
  * 
@@ -16,10 +19,13 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * 注意：本内容仅限于江苏华博金服控股有限公司内部传阅，禁止外泄以及用于其他的商业目
  */
 @SpringBootApplication
-@EnableEurekaServer
+@EnableConfigServer
 @EnableDiscoveryClient
-public class payEurekaApplication {
+public class PayConfigApplication {
+    
+    protected static CustomLogger logger = LoggerFactory.getCustomLogger(PayConfigApplication.class);
+    
     public static void main(String[] args) {
-    	new SpringApplicationBuilder(payEurekaApplication.class).web(true).run(args);
+    	new SpringApplicationBuilder(PayConfigApplication.class).web(true).run(args);
     }
 }

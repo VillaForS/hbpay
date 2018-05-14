@@ -13,6 +13,7 @@
     <pay-common.version>0.0.1-SNAPSHOT</pay-common.version>
     <redis-util.version>0.0.1-SNAPSHOT</redis-util.version>
     <pay-interface.version>0.0.1-SNAPSHOT</pay-interface.version>
+    <hbfintech-logger.version>0.0.13</hbfintech-logger.version>
     
     <!-- spring jar  -->
     <spring-boot-dependencies.version>1.5.12.RELEASE</spring-boot-dependencies.version>
@@ -30,7 +31,6 @@
 	
 	<!-- log -->
 	<logback-classic.version>1.1.7</logback-classic.version>
-	<slf4j-api.version>1.7.7</slf4j-api.version>
 	
 	<!--  apache -->
 	<commons-lang3.version>3.5</commons-lang3.version>
@@ -43,8 +43,6 @@
 	
 	<!-- third party -->
 	<lombok.version>1.16.20</lombok.version>
-	<log4j.version>1.2.17</log4j.version>
-	<log4j-to-slf4j.version>2.10.0</log4j-to-slf4j.version>
   </properties>
   
   <dependencyManagement> 
@@ -113,16 +111,6 @@
 		    <artifactId>lombok</artifactId>
 		    <version>${lombok.version}</version>
     </dependency>
-     <dependency>
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		    <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-to-slf4j</artifactId>
-			<version>${log4j-to-slf4j.version}</version>
-		</dependency>
 		        <dependency>
             <groupId>com.hbfintech</groupId>
             <artifactId>pay-interface</artifactId>
@@ -131,20 +119,18 @@
 		<dependency>  
 		    <groupId>org.springframework.boot</groupId>  
 		    <artifactId>spring-boot-starter</artifactId>  
-		    <!-- 去除对默认日志的依赖 -->  
-		    <exclusions>  
-		        <exclusion>  
-		            <groupId>org.springframework.boot</groupId>  
-		            <artifactId>spring-boot-starter-logging</artifactId>  
-		        </exclusion>  
-		    </exclusions>  
 		</dependency>  
+		 <dependency>
+            <groupId>com.hbfintech</groupId>
+            <artifactId>hbfintech-logger</artifactId>
+            <version>${hbfintech-logger.version}</version>
+        </dependency>
 		</dependencies>
   </dependencyManagement>
 
   <!-- 默认child 工程都依赖的类，只能是所有工程的最小化依赖，child工程特定的依赖在child工程pom里添加-->
   <dependencies>
-			<dependency>
+			<dependency>  
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
 				<version>${fastjson.version}</version>
@@ -167,13 +153,13 @@
 			    <artifactId>lombok</artifactId>
 			</dependency>
 			<dependency>
-			    <groupId>log4j</groupId>
-			    <artifactId>log4j</artifactId>
-			</dependency>
-			<dependency>
 			    <groupId>commons-codec</groupId>
 			    <artifactId>commons-codec</artifactId>
             </dependency>
+            <dependency>
+            <groupId>com.hbfintech</groupId>
+            <artifactId>hbfintech-logger</artifactId>
+           </dependency>
   </dependencies>
   <build>
    <plugins>

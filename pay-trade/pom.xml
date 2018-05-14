@@ -82,6 +82,10 @@
         <version>1.3.5</version>
         <scope>compile</scope>
       </dependency>
+      <dependency>
+            <groupId>com.hbfintech</groupId>
+            <artifactId>pay-interface</artifactId>
+        </dependency>
   </dependencies>
   <build>
 		<plugins>

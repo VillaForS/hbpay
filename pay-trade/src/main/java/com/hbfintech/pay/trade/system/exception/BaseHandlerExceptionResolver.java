@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.ExceptionLogger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.BindException;
@@ -19,8 +20,9 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.hbfintech.logger.CustomLogger;
+import com.hbfintech.logger.LoggerFactory;
 import com.hbfintech.pay.common.exception.BizException;
-import com.hbfintech.pay.common.log.ExceptionLogger;
 import com.hbfintech.pay.intf.dto.trade.ResponseDto;
 import com.hbfintech.pay.intf.enumm.RespCodeEnum;
 
@@ -30,6 +32,8 @@ import com.hbfintech.pay.intf.enumm.RespCodeEnum;
  *
  */
 public class BaseHandlerExceptionResolver extends SimpleMappingExceptionResolver {
+    
+    protected static CustomLogger logger = LoggerFactory.getCustomLogger(BaseHandlerExceptionResolver.class);
 
 	
     @Override
@@ -56,7 +60,7 @@ public class BaseHandlerExceptionResolver extends SimpleMappingExceptionResolver
 		response.setHeader("Cache-Control", "no-cache, must-revalidate");   
 		try {     
 			
-			ExceptionLogger.error("BaseHandlerExceptionResolver","",ex);     
+		    logger.error("BaseHandlerExceptionResolver","",ex);     
 			PrintWriter writer = response.getWriter(); 
 			
 			ResponseDto model= new ResponseDto(RespCodeEnum.SYSTEM_ERROR);
@@ -82,7 +86,7 @@ public class BaseHandlerExceptionResolver extends SimpleMappingExceptionResolver
 	    	}
 			writer.close();    
 		} catch (IOException e) {    
-			ExceptionLogger.error("BaseHandlerExceptionResolver","write respone error",ex);    
+		    logger.error("BaseHandlerExceptionResolver","write respone error",ex);    
 		}    
 		return mv;
 	}

@@ -4,6 +4,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+import com.hbfintech.logger.CustomLogger;
+import com.hbfintech.logger.LoggerFactory;
+
 /**
  * 
  * @ClassName:  payTradeApplication   
@@ -17,6 +20,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @SpringBootApplication
 public class PayTradeApplication {
+    
+    protected static CustomLogger logger = LoggerFactory.getCustomLogger(PayTradeApplication.class);
+
+    
     public static void main(String[] args) {
     	new SpringApplicationBuilder(PayTradeApplication.class).web(true).run(args);
     }
