@@ -7,7 +7,6 @@
     <result column="prod_code" jdbcType="VARCHAR" property="prodCode" />
     <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
     <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="weight" jdbcType="INTEGER" property="weight" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="valid" jdbcType="BIT" property="valid" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -17,8 +16,8 @@
     <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-    channel_id, channel_code, prod_code, channel_name, status, weight, remark, valid, 
-    create_time, update_time, oper_id, oper_name, version
+    channel_id, channel_code, prod_code, channel_name, status, remark, valid, create_time, 
+    update_time, oper_id, oper_name, version
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -35,15 +34,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pay_channel (channel_code, prod_code, channel_name, 
-      status, weight, remark, 
-      valid, create_time, update_time, 
-      oper_id, oper_name, version
-      )
+      status, remark, valid, 
+      create_time, update_time, oper_id, 
+      oper_name, version)
     values (#{channelCode,jdbcType=VARCHAR}, #{prodCode,jdbcType=VARCHAR}, #{channelName,jdbcType=VARCHAR}, 
-      #{status,jdbcType=TINYINT}, #{weight,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
-      #{valid,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{operId,jdbcType=BIGINT}, #{operName,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}
-      )
+      #{status,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, #{valid,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{operId,jdbcType=BIGINT}, 
+      #{operName,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannel">
     <selectKey keyProperty="channelId" order="AFTER" resultType="java.lang.Long">
@@ -62,9 +59,6 @@
       </if>
       <if test="status != null">
         status,
-      </if>
-      <if test="weight != null">
-        weight,
       </if>
       <if test="remark != null">
         remark,
@@ -100,9 +94,6 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=TINYINT},
-      </if>
-      <if test="weight != null">
-        #{weight,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
@@ -142,9 +133,6 @@
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="weight != null">
-        weight = #{weight,jdbcType=INTEGER},
-      </if>
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
@@ -175,7 +163,6 @@
       prod_code = #{prodCode,jdbcType=VARCHAR},
       channel_name = #{channelName,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
-      weight = #{weight,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR},
       valid = #{valid,jdbcType=BIT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -185,7 +172,7 @@
       version = #{version,jdbcType=INTEGER}
     where channel_id = #{channelId,jdbcType=BIGINT}
   </update>
-     <select id="getChannelByCode" resultMap="BaseResultMap">
+  <select id="getChannelByCode" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from pay_channel
@@ -198,4 +185,5 @@
     from pay_channel
     where prod_code=  #{prod_code],jdbcType=VARCHAR} and status =1 and valid = 0 
   </select>
+  
 </mapper>

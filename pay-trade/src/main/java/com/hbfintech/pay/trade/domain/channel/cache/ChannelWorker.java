@@ -31,4 +31,9 @@ public class ChannelWorker extends SyncCacheWorker<PayChannel,String>{
          return channel;
     }
 
+    @Override
+    protected void clearCache()
+    {
+        redisCacheUtil.del(PayCacheKeys.CHANNEL_VALID_CHANNELS);
+    }
 }

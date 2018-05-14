@@ -29,4 +29,10 @@ public class ProductCacheWorker extends SyncCacheWorker<PayProduct,String>{
          }
          return prod;
     }
+    
+    @Override
+    protected void clearCache()
+    {
+        redisCacheUtil.del(PayCacheKeys.PROD_VALID_PRODS);
+    }
 }

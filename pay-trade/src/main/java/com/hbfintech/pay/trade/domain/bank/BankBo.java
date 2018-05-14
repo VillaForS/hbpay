@@ -1,16 +1,12 @@
 package com.hbfintech.pay.trade.domain.bank;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.common.collect.Maps;
-import com.hbfintech.pay.trade.dict.PayConstants;
+import com.hbfintech.pay.trade.domain.bank.cache.BankOpenChannelsWeightWorker;
 import com.hbfintech.pay.trade.domain.bank.cache.BankOpenChannelsWorker;
-import com.hbfintech.pay.trade.domain.prod.cache.ProdBankCacheWorker;
-import com.hbfintech.pay.trade.repository.entity.PayBankProduct;
 import com.hbfintech.pay.trade.repository.entity.PayChannelBank;
 
 @Service
@@ -18,16 +14,28 @@ public class BankBo
 {
 
     @Autowired
-    ProdBankCacheWorker prodOpenBankCacheWorker ;
+    BankOpenChannelsWorker bankOpenChannelsWorker;
     
     @Autowired
-    BankOpenChannelsWorker bankOpenChannelsWorker;
+    BankOpenChannelsWeightWorker bankOpenChannelsWeightWorker;
     
     
     public List<PayChannelBank> getBankOpenChannels(String bankCode){
-        List<PayChannelBank> list = bankOpenChannelsWorker.find(bankCode);
-        return list;
+        return bankOpenChannelsWorker.find(bankCode);
     }
 
+    public List<String> getBankChannelWeightList(String bankCode){
+        return bankOpenChannelsWeightWorker.find(bankCode);
+    }
+    
+    public PayChannelBank getByCode(String bankCode ,String channelCode) {
+        List<PayChannelBank> banks = bankOpenChannelsWorker.find(bankCode);
+        for(PayChannelBank channelBank : banks ) {
+            if(channelCode.equals(channelBank.getChannelCode())){
+                return channelBank;
+            }
+        }
+        return null;
+    }
 
 }

@@ -273,5 +273,7 @@ public abstract class SyncCacheWorker<T, Z> {
         }
         return t;
     }
+    
+    protected abstract void clearCache();
 
 }

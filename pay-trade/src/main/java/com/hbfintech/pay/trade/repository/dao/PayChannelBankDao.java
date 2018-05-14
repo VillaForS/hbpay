@@ -2,6 +2,7 @@ package com.hbfintech.pay.trade.repository.dao;
 
 import java.util.List;
 
+import com.hbfintech.pay.trade.repository.entity.PayChannel;
 import com.hbfintech.pay.trade.repository.entity.PayChannelBank;
 
 public interface PayChannelBankDao {
@@ -17,5 +18,6 @@ public interface PayChannelBankDao {
 
     int updateByPrimaryKey(PayChannelBank record);
     
-    List<PayChannelBank> getChannelOpenBanks(String channelCode);
+    List<PayChannelBank> getBankOpenChannels(String channelCode);
+
 }

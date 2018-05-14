@@ -57,6 +57,13 @@ public class PayChannelBank implements Serializable {
     private Date maintainEndTime;
 
     /**
+     * 权重
+     *
+     * @mbg.generated
+     */
+    private Integer weight;
+
+    /**
      * 渠道银行状态：0：关闭 1：开通
      *
      * @mbg.generated
@@ -178,6 +185,14 @@ public class PayChannelBank implements Serializable {
         this.maintainEndTime = maintainEndTime;
     }
 
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
     public Byte getStatus() {
         return status;
     }
@@ -256,6 +271,7 @@ public class PayChannelBank implements Serializable {
         sb.append(", dayMaxAmount=").append(dayMaxAmount);
         sb.append(", maintainStartTime=").append(maintainStartTime);
         sb.append(", maintainEndTime=").append(maintainEndTime);
+        sb.append(", weight=").append(weight);
         sb.append(", status=").append(status);
         sb.append(", remark=").append(remark);
         sb.append(", valid=").append(valid);
@@ -288,6 +304,7 @@ public class PayChannelBank implements Serializable {
             && (this.getDayMaxAmount() == null ? other.getDayMaxAmount() == null : this.getDayMaxAmount().equals(other.getDayMaxAmount()))
             && (this.getMaintainStartTime() == null ? other.getMaintainStartTime() == null : this.getMaintainStartTime().equals(other.getMaintainStartTime()))
             && (this.getMaintainEndTime() == null ? other.getMaintainEndTime() == null : this.getMaintainEndTime().equals(other.getMaintainEndTime()))
+            && (this.getWeight() == null ? other.getWeight() == null : this.getWeight().equals(other.getWeight()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
             && (this.getValid() == null ? other.getValid() == null : this.getValid().equals(other.getValid()))
@@ -310,6 +327,7 @@ public class PayChannelBank implements Serializable {
         result = prime * result + ((getDayMaxAmount() == null) ? 0 : getDayMaxAmount().hashCode());
         result = prime * result + ((getMaintainStartTime() == null) ? 0 : getMaintainStartTime().hashCode());
         result = prime * result + ((getMaintainEndTime() == null) ? 0 : getMaintainEndTime().hashCode());
+        result = prime * result + ((getWeight() == null) ? 0 : getWeight().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
         result = prime * result + ((getValid() == null) ? 0 : getValid().hashCode());

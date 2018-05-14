@@ -33,4 +33,9 @@ public class ProdOpenChannelsWorker extends SyncCacheWorker<List<PayChannel>,Str
          return channels;
     }
 
+    @Override
+    protected void clearCache()
+    {
+        redisCacheUtil.del(PayCacheKeys.CHANNEL_VALID_CHANNELS);
+    }
 }

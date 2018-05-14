@@ -30,4 +30,9 @@ public class ProdBankCacheWorker extends SyncCacheWorker<PayBankProduct,Map<Stri
          return bank;
     }
 
+    @Override
+    protected void clearCache()
+    {
+        redisCacheUtil.del(PayCacheKeys.BANK_PROD_OPEN);
+    }
 }

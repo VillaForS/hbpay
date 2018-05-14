@@ -1,6 +1,5 @@
 package com.hbfintech.pay.trade.domain.merchant.cache;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +38,11 @@ public class MchProdCacheWorker extends SyncCacheWorker<PayMerchantProduct,Map<S
              redisCacheUtil.hsetBin(PayCacheKeys.MCH_PROD, map.get("mchCode")+map.get("prodCode"), mchProd);
          }
          return mchProd;
+    }
+    
+    @Override
+    protected void clearCache()
+    {
+        redisCacheUtil.del(PayCacheKeys.MCH_PROD);
     }
 }

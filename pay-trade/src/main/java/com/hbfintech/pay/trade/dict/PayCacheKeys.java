@@ -26,6 +26,8 @@ public interface PayCacheKeys
     public static final String CHANNEL_PROD_OPEN=PayCacheNS.CHANNEL+"prodChannels";
     //渠道开通的银行
     public static final String CHANNEL_BANK_OPEN=PayCacheNS.CHANNEL+"openBanks";
+    //渠道权重
+    public static final String CHANNEL_BANK_OPEN_WEIGHT=PayCacheNS.CHANNEL+"weight";
     
     /**
      * 商户缓存

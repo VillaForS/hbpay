@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hbfintech.pay.trade.repository.dao.PayChannelBankDao">
-  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.po.PayChannelBank">
+  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.entity.PayChannelBank">
     <id column="channel_bank_id" jdbcType="BIGINT" property="channelBankId" />
     <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
     <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
@@ -10,6 +10,7 @@
     <result column="day_max_amount" jdbcType="VARCHAR" property="dayMaxAmount" />
     <result column="maintain_start_time" jdbcType="TIMESTAMP" property="maintainStartTime" />
     <result column="maintain_end_time" jdbcType="TIMESTAMP" property="maintainEndTime" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="valid" jdbcType="BIT" property="valid" />
@@ -21,8 +22,8 @@
   </resultMap>
   <sql id="Base_Column_List">
     channel_bank_id, channel_code, bank_code, per_max_amount, per_min_amount, day_max_amount, 
-    maintain_start_time, maintain_end_time, status, remark, valid, create_time, update_time, 
-    oper_id, oper_name, version
+    maintain_start_time, maintain_end_time, weight, status, remark, valid, create_time, 
+    update_time, oper_id, oper_name, version
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -34,24 +35,24 @@
     delete from pay_channel_bank
     where channel_bank_id = #{channelBankId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.po.PayChannelBank">
+  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannelBank">
     <selectKey keyProperty="channelBankId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pay_channel_bank (channel_code, bank_code, per_max_amount, 
       per_min_amount, day_max_amount, maintain_start_time, 
-      maintain_end_time, status, remark, 
-      valid, create_time, update_time, 
-      oper_id, oper_name, version
-      )
+      maintain_end_time, weight, status, 
+      remark, valid, create_time, 
+      update_time, oper_id, oper_name, 
+      version)
     values (#{channelCode,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}, #{perMaxAmount,jdbcType=DECIMAL}, 
       #{perMinAmount,jdbcType=DECIMAL}, #{dayMaxAmount,jdbcType=VARCHAR}, #{maintainStartTime,jdbcType=TIMESTAMP}, 
-      #{maintainEndTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, 
-      #{valid,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{operId,jdbcType=BIGINT}, #{operName,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}
-      )
+      #{maintainEndTime,jdbcType=TIMESTAMP}, #{weight,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{remark,jdbcType=VARCHAR}, #{valid,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{operId,jdbcType=BIGINT}, #{operName,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.po.PayChannelBank">
+  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannelBank">
     <selectKey keyProperty="channelBankId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -77,6 +78,9 @@
       </if>
       <if test="maintainEndTime != null">
         maintain_end_time,
+      </if>
+      <if test="weight != null">
+        weight,
       </if>
       <if test="status != null">
         status,
@@ -125,6 +129,9 @@
       <if test="maintainEndTime != null">
         #{maintainEndTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         #{status,jdbcType=TINYINT},
       </if>
@@ -151,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.po.PayChannelBank">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannelBank">
     update pay_channel_bank
     <set>
       <if test="channelCode != null">
@@ -174,6 +181,9 @@
       </if>
       <if test="maintainEndTime != null">
         maintain_end_time = #{maintainEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
@@ -202,7 +212,7 @@
     </set>
     where channel_bank_id = #{channelBankId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.po.PayChannelBank">
+  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.entity.PayChannelBank">
     update pay_channel_bank
     set channel_code = #{channelCode,jdbcType=VARCHAR},
       bank_code = #{bankCode,jdbcType=VARCHAR},
@@ -211,6 +221,7 @@
       day_max_amount = #{dayMaxAmount,jdbcType=VARCHAR},
       maintain_start_time = #{maintainStartTime,jdbcType=TIMESTAMP},
       maintain_end_time = #{maintainEndTime,jdbcType=TIMESTAMP},
+      weight = #{weight,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
       remark = #{remark,jdbcType=VARCHAR},
       valid = #{valid,jdbcType=BIT},
@@ -221,8 +232,7 @@
       version = #{version,jdbcType=INTEGER}
     where channel_bank_id = #{channelBankId,jdbcType=BIGINT}
   </update>
-  
-   <select id="getChannelOpenBanks" resultMap="BaseResultMap">
+  <select id="getBankOpenChannels" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from pay_channel_bank

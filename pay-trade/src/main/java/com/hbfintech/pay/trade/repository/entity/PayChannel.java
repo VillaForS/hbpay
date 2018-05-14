@@ -45,13 +45,6 @@ B2B代付：B2BDF
     private Byte status;
 
     /**
-     * 渠道权重
-     *
-     * @mbg.generated
-     */
-    private Integer weight;
-
-    /**
      * 备注
      *
      * @mbg.generated
@@ -142,14 +135,6 @@ B2B代付：B2BDF
         this.status = status;
     }
 
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Integer weight) {
-        this.weight = weight;
-    }
-
     public String getRemark() {
         return remark;
     }
@@ -217,7 +202,6 @@ B2B代付：B2BDF
         sb.append(", prodCode=").append(prodCode);
         sb.append(", channelName=").append(channelName);
         sb.append(", status=").append(status);
-        sb.append(", weight=").append(weight);
         sb.append(", remark=").append(remark);
         sb.append(", valid=").append(valid);
         sb.append(", createTime=").append(createTime);
@@ -246,7 +230,6 @@ B2B代付：B2BDF
             && (this.getProdCode() == null ? other.getProdCode() == null : this.getProdCode().equals(other.getProdCode()))
             && (this.getChannelName() == null ? other.getChannelName() == null : this.getChannelName().equals(other.getChannelName()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getWeight() == null ? other.getWeight() == null : this.getWeight().equals(other.getWeight()))
             && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
             && (this.getValid() == null ? other.getValid() == null : this.getValid().equals(other.getValid()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
@@ -265,7 +248,6 @@ B2B代付：B2BDF
         result = prime * result + ((getProdCode() == null) ? 0 : getProdCode().hashCode());
         result = prime * result + ((getChannelName() == null) ? 0 : getChannelName().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
-        result = prime * result + ((getWeight() == null) ? 0 : getWeight().hashCode());
         result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
         result = prime * result + ((getValid() == null) ? 0 : getValid().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());

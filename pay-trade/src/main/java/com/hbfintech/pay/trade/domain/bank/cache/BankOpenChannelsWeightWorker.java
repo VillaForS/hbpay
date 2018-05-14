@@ -14,7 +14,7 @@ import com.hbfintech.redis.utils.RedisCacheUtil;
 import com.hbfintech.redis.utils.SyncCacheWorker;
 
 @Component
-public class BankOpenChannelsWorker extends SyncCacheWorker<List<PayChannelBank>,String>{
+public class BankOpenChannelsWeightWorker extends SyncCacheWorker<List<String>,String>{
     
     @Autowired
     RedisCacheUtil  redisCacheUtil;
@@ -22,22 +22,31 @@ public class BankOpenChannelsWorker extends SyncCacheWorker<List<PayChannelBank>
     @Autowired
     PayChannelBankDao payChannelBankDao; 
     
-    protected List<PayChannelBank> read(String bankCode) {
+    protected List<String> read(String bankCode) {
          String banks=  redisCacheUtil.hgetBin(PayCacheKeys.CHANNEL_BANK_OPEN, bankCode, String.class);
-         return  JSON.parseArray(banks, PayChannelBank.class);
+         return  JSON.parseArray(banks, String.class);
     }
     
-    protected List<PayChannelBank> write(String bankCode) { 
+    protected List<String> write(String bankCode) { 
         
          List<PayChannelBank> banks = payChannelBankDao.getBankOpenChannels(bankCode);
-         redisCacheUtil.hsetBin(PayCacheKeys.CHANNEL_BANK_OPEN, bankCode, banks);
-         return banks;
+         //权重缓存
+         List<String> weightList = Lists.newArrayList();
+         for(PayChannelBank bank : banks) {
+             if(bank.getWeight()>0) {
+                 for(int i=0; i<bank.getWeight();i++) {
+                   weightList.add(bank.getChannelCode());
+                 }
+             }
+         }
+         redisCacheUtil.hsetBin(PayCacheKeys.CHANNEL_BANK_OPEN_WEIGHT, bankCode, weightList);
+         return weightList;
     }
 
     @Override
     protected void clearCache()
     {
-        redisCacheUtil.del(PayCacheKeys.CHANNEL_BANK_OPEN);
+        redisCacheUtil.del(PayCacheKeys.CHANNEL_BANK_OPEN_WEIGHT);
     }
 
 }

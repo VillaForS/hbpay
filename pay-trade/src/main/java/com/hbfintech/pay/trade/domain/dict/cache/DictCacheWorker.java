@@ -38,4 +38,9 @@ public class DictCacheWorker extends SyncCacheWorker<String,String>{
          return value;
     }
 
+    @Override
+    protected void clearCache()
+    {
+        redisCacheUtil.del(PayCacheKeys.DICT);
+    }
 }

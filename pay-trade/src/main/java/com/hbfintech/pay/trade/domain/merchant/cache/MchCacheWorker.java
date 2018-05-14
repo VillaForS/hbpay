@@ -29,4 +29,10 @@ public class MchCacheWorker extends SyncCacheWorker<PayMerchant,String>{
          }
          return prod;
     }
+    
+    @Override
+    protected void clearCache()
+    {
+        redisCacheUtil.del(PayCacheKeys.MCH_VALIDMCHS);
+    }
 }

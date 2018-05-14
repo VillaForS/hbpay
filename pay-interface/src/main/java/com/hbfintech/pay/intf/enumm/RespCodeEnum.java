@@ -21,6 +21,7 @@ public enum RespCodeEnum {
     BIZ_PROD_NOTOPEN("BIZ_0003","该支付产品未开通"),
     BIZ_CHANNEL_NOTOPEN("BIZ_0004","该支付产品未开通支付渠道"),
     BIZ_BANK_NOTOPEN("BIZ_0004","该银行未开通"),
+    BIZ_CHANNEL_NOAVAL("BIZ_0005","没有可用的渠道"),
     
 
     // 未知错误
