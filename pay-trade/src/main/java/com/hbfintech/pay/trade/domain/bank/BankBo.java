@@ -3,13 +3,13 @@ package com.hbfintech.pay.trade.domain.bank;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.hbfintech.pay.trade.domain.bank.cache.BankOpenChannelsWeightWorker;
 import com.hbfintech.pay.trade.domain.bank.cache.BankOpenChannelsWorker;
 import com.hbfintech.pay.trade.repository.entity.PayChannelBank;
 
-@Service
+@Component
 public class BankBo 
 {
 

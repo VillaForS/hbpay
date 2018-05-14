@@ -179,6 +179,6 @@
 	</logger>
 
 	<root level="ERROR">
-		<appender-ref re  f="STDOUT" />
+		<appender-ref ref="STDOUT" />
 	</root>
 </configuration>

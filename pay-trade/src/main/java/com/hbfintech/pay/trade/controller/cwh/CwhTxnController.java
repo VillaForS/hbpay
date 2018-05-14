@@ -15,7 +15,7 @@ import com.hbfintech.pay.trade.checker.Checker;
 import com.hbfintech.pay.trade.repository.entity.PayContractWithholdTxn;
 import com.hbfintech.pay.trade.service.cwh.CwhTxnService;
 
-@RestController("/cwh")
+@RestController("/cwhTxn")
 public class CwhTxnController {
 	
 	@Autowired

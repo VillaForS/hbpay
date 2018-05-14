@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hbfintech.pay.trade.repository.dao.PayContractWithholdSignDao">
-  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign">
     <id column="withhold_sign_id" jdbcType="BIGINT" property="withholdSignId" />
     <result column="withhold_sign_no" jdbcType="VARCHAR" property="withholdSignNo" />
     <result column="mch_code" jdbcType="VARCHAR" property="mchCode" />
@@ -49,7 +49,7 @@
     delete from pay_contract_withhold_sign
     where withhold_sign_id = #{withholdSignId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign">
     <selectKey keyProperty="withholdSignId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -74,7 +74,7 @@
       #{updateTime,jdbcType=TIMESTAMP}, #{operId,jdbcType=BIGINT}, #{operRemark,jdbcType=VARCHAR}, 
       #{operTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign">
     <selectKey keyProperty="withholdSignId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -252,7 +252,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign">
     update pay_contract_withhold_sign
     <set>
       <if test="withholdSignNo != null">
@@ -342,7 +342,7 @@
     </set>
     where withhold_sign_id = #{withholdSignId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign">
     update pay_contract_withhold_sign
     set withhold_sign_no = #{withholdSignNo,jdbcType=VARCHAR},
       mch_code = #{mchCode,jdbcType=VARCHAR},
@@ -380,7 +380,7 @@
                   update_time = now()
             where withhold_sign_id = #{withholdSignId,jdbcType=BIGINT}
     </update>
-    <update id="fail" parameterType="com.hbfintech.pay.trade.repository.po.PayContractWithholdSign">
+    <update id="fail" parameterType="com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign">
             update pay_contract_withhold_sign
              set status = 40,
                   resp_code = #{respCode,jdbcType=VARCHAR},

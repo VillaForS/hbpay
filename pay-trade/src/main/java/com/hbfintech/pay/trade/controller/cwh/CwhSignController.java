@@ -21,7 +21,7 @@ import com.hbfintech.pay.trade.repository.entity.PayContractWithholdSign;
 import com.hbfintech.pay.trade.service.cwh.CwhSignService;
 import com.hbfintech.redis.sequence.utils.SequenceNoService;
 
-@RestController("/cwh")
+@RestController("/cwhSign")
 public class CwhSignController {
 	
 	@Autowired

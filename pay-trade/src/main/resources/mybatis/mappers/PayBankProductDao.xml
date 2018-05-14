@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hbfintech.pay.trade.repository.dao.PayBankProductDao">
-  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.po.PayBankProduct">
+  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.entity.PayBankProduct">
     <id column="bank_prod_id" jdbcType="BIGINT" property="bankProdId" />
     <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
     <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
@@ -28,7 +28,7 @@
     delete from pay_bank_product
     where bank_prod_id = #{bankProdId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.po.PayBankProduct">
+  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.entity.PayBankProduct">
     <selectKey keyProperty="bankProdId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -41,7 +41,7 @@
       #{operId,jdbcType=BIGINT}, #{operName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.po.PayBankProduct">
+  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayBankProduct">
     <selectKey keyProperty="bankProdId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.po.PayBankProduct">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayBankProduct">
     update pay_bank_product
     <set>
       <if test="bankCode != null">
@@ -147,7 +147,7 @@
     </set>
     where bank_prod_id = #{bankProdId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.po.PayBankProduct">
+  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.entity.PayBankProduct">
     update pay_bank_product
     set bank_code = #{bankCode,jdbcType=VARCHAR},
       bank_name = #{bankName,jdbcType=VARCHAR},

@@ -2,6 +2,7 @@ package com.hbfintech.pay.trade.service.cwh;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.hbfintech.pay.common.util.BeanConvertUtils;
@@ -15,6 +16,7 @@ import com.hbfintech.pay.trade.repository.dao.PayContractWithholdTxnDao;
 import com.hbfintech.pay.trade.repository.entity.PayContractWithholdTxn;
 import com.hbfintech.redis.sequence.utils.SequenceNoService;
 
+@Service
 public class CwhTxnService {
 
     @Autowired

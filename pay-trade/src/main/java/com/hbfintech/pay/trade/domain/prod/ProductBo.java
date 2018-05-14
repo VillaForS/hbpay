@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Maps;
 import com.hbfintech.pay.trade.dict.PayConstants;
@@ -14,6 +15,7 @@ import com.hbfintech.pay.trade.repository.entity.PayBankProduct;
 import com.hbfintech.pay.trade.repository.entity.PayChannel;
 import com.hbfintech.pay.trade.repository.entity.PayProduct;
 
+@Component
 public class ProductBo
 {
     

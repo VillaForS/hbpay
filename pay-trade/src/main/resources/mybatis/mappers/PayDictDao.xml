@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hbfintech.pay.trade.repository.dao.PayDictDao">
-  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.po.PayDict">
+  <resultMap id="BaseResultMap" type="com.hbfintech.pay.trade.repository.entity.PayDict">
     <id column="dict_id" jdbcType="BIGINT" property="dictId" />
     <result column="key" jdbcType="VARCHAR" property="key" />
     <result column="value" jdbcType="VARCHAR" property="value" />
@@ -20,7 +20,7 @@
     delete from pay_dict
     where dict_id = #{dictId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.po.PayDict">
+  <insert id="insert" parameterType="com.hbfintech.pay.trade.repository.entity.PayDict">
     <selectKey keyProperty="dictId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -29,7 +29,7 @@
     values (#{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{valid,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.po.PayDict">
+  <insert id="insertSelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayDict">
     <selectKey keyProperty="dictId" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.po.PayDict">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hbfintech.pay.trade.repository.entity.PayDict">
     update pay_dict
     <set>
       <if test="key != null">
@@ -72,7 +72,7 @@
     </set>
     where dict_id = #{dictId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.po.PayDict">
+  <update id="updateByPrimaryKey" parameterType="com.hbfintech.pay.trade.repository.entity.PayDict">
     update pay_dict
     set key = #{key,jdbcType=VARCHAR},
       value = #{value,jdbcType=VARCHAR},

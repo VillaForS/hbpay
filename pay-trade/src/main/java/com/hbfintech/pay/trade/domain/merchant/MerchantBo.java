@@ -3,6 +3,7 @@ package com.hbfintech.pay.trade.domain.merchant;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Maps;
 import com.hbfintech.pay.trade.dict.PayConstants;
@@ -11,6 +12,7 @@ import com.hbfintech.pay.trade.domain.merchant.cache.MchProdCacheWorker;
 import com.hbfintech.pay.trade.repository.entity.PayMerchant;
 import com.hbfintech.pay.trade.repository.entity.PayMerchantProduct;
 
+@Component
 public class MerchantBo
 {
     

@@ -7,9 +7,13 @@ import javax.validation.ValidatorFactory;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+
+import com.hbfintech.pay.trade.system.exception.BaseHandlerExceptionResolver;
 
 @Configuration
-public class ValidatorConfig {
+public class FrameConfig {
 
 	@Bean
     public Validator validator(){
@@ -21,4 +25,14 @@ public class ValidatorConfig {
 
         return validator;
     }
+	
+   @Bean
+   public HandlerExceptionResolver getExceptionResolver(){
+        return new BaseHandlerExceptionResolver();
+    }
+   
+   @Bean
+   public RestTemplate getRestTemplate() {
+       return new RestTemplate();
+   }
 }

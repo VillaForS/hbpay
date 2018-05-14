@@ -37,7 +37,7 @@ public class DictCacheWorker extends SyncCacheWorker<String,String>{
          redisCacheUtil.hsetBin(PayCacheKeys.DICT, key, value);
          return value;
     }
-
+    
     @Override
     protected void clearCache()
     {
